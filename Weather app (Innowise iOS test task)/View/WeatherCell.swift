@@ -9,54 +9,51 @@ import UIKit
 
 class WeatherCell: UITableViewCell {
     static let reuseId = "weatherCell"
-    
-    private let weatherImage: UIImageView = {
+// MARK: UI elements
+    let weatherImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "sun.max")
         image.tintColor = .black
         return image
     }()
-    private let timeTextView: UITextView = {
+    let timeTextView: UITextView = {
         let textView = UITextView()
         textView.text = "13:00"
-        textView.font = .systemFont(ofSize: 16)
         textView.backgroundColor = .none
         textView.textAlignment = .center
         textView.isEditable = false
         textView.isScrollEnabled = false
         return textView
     }()
-    private let weatherTextView: UITextView = {
+    let weatherTextView: UITextView = {
         let textView = UITextView()
         textView.text = "Clear"
-        textView.font = .systemFont(ofSize: 16)
         textView.backgroundColor = .none
         textView.textAlignment = .center
         textView.isEditable = false
         textView.isScrollEnabled = false
         return textView
     }()
-    private let weatherLabel: UILabel = {
+    let weatherLabel: UILabel = {
         let label = UILabel()
         label.text = "22ºC"
         label.font = UIFont.systemFont(ofSize: 30)
         label.textAlignment = .center
         return label
     }()
-    
+// MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         contentView.addSubview(weatherImage)
         contentView.addSubview(timeTextView)
         contentView.addSubview(weatherTextView)
-//        contentView.addSubview(weatherLabel)
+        contentView.addSubview(weatherLabel)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+// MARK: LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -69,7 +66,6 @@ class WeatherCell: UITableViewCell {
                                     y: (contentView.frame.size.height - imageSize) / 2,
                                     width: imageSize,
                                     height: imageSize)
-        
         timeTextView.frame = CGRect(x: 10 + weatherImage.frame.width + 20,
                                     y: (contentView.frame.size.height - textSize) / 2 - textSize/2,
                                     width: 100,
@@ -78,9 +74,9 @@ class WeatherCell: UITableViewCell {
                                     y: (contentView.frame.size.height - textSize) / 2 + textSize/2,
                                     width: 100,
                                     height: textSize)
-        
+        weatherLabel.frame = CGRect(x: (contentView.frame.size.width - imageSize * 1.25),
+                                    y: (contentView.frame.size.height - imageSize) / 2,
+                                    width: imageSize,
+                                    height: imageSize)
     }
-    
-
-
 }

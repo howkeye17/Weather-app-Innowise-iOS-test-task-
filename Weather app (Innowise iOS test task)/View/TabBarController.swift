@@ -20,7 +20,7 @@ class TabBarController: UITabBarController{
         todayVC.tabBarItem.image = UIImage(systemName: "sun.max")
         
         forecastVC.title = "Forecast"
-        forecastVC.view.backgroundColor = .systemGray
+//        forecastVC.view.backgroundColor = .systemGray
         forecastVC.tabBarItem.image = UIImage(systemName: "cloud.moon")
         
         self.setViewControllers([todayVC, forecastVC], animated: false)
