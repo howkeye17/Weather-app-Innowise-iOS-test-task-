@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		EAB545CB26FF2F19000D0354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CA26FF2F19000D0354 /* AppDelegate.swift */; };
 		EAB545CD26FF2F1A000D0354 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CC26FF2F1A000D0354 /* SceneDelegate.swift */; };
-		EAB545CF26FF2F1A000D0354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CE26FF2F1A000D0354 /* ViewController.swift */; };
-		EAB545D226FF2F1A000D0354 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB545D026FF2F1A000D0354 /* Main.storyboard */; };
+		EAB545CF26FF2F1A000D0354 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CE26FF2F1A000D0354 /* TabBarController.swift */; };
 		EAB545D426FF2F1E000D0354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAB545D326FF2F1E000D0354 /* Assets.xcassets */; };
 		EAB545D726FF2F1E000D0354 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB545D526FF2F1E000D0354 /* LaunchScreen.storyboard */; };
+		EAB545DF26FF302E000D0354 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545DE26FF302E000D0354 /* TodayViewController.swift */; };
+		EAB545E126FF3041000D0354 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545E026FF3041000D0354 /* ForecastViewController.swift */; };
+		EAB545E426FF34A3000D0354 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545E326FF34A3000D0354 /* WeatherCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EAB545C726FF2F19000D0354 /* Weather app (Innowise iOS test task).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather app (Innowise iOS test task).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB545CA26FF2F19000D0354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAB545CC26FF2F1A000D0354 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EAB545CE26FF2F1A000D0354 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EAB545D126FF2F1A000D0354 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EAB545CE26FF2F1A000D0354 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		EAB545D326FF2F1E000D0354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAB545D626FF2F1E000D0354 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAB545D826FF2F1E000D0354 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAB545DE26FF302E000D0354 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		EAB545E026FF3041000D0354 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
+		EAB545E326FF34A3000D0354 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,23 @@
 			children = (
 				EAB545CA26FF2F19000D0354 /* AppDelegate.swift */,
 				EAB545CC26FF2F1A000D0354 /* SceneDelegate.swift */,
-				EAB545CE26FF2F1A000D0354 /* ViewController.swift */,
-				EAB545D026FF2F1A000D0354 /* Main.storyboard */,
+				EAB545E226FF342A000D0354 /* View */,
 				EAB545D326FF2F1E000D0354 /* Assets.xcassets */,
 				EAB545D526FF2F1E000D0354 /* LaunchScreen.storyboard */,
 				EAB545D826FF2F1E000D0354 /* Info.plist */,
 			);
 			path = "Weather app (Innowise iOS test task)";
+			sourceTree = "<group>";
+		};
+		EAB545E226FF342A000D0354 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EAB545CE26FF2F1A000D0354 /* TabBarController.swift */,
+				EAB545DE26FF302E000D0354 /* TodayViewController.swift */,
+				EAB545E026FF3041000D0354 /* ForecastViewController.swift */,
+				EAB545E326FF34A3000D0354 /* WeatherCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +140,6 @@
 			files = (
 				EAB545D726FF2F1E000D0354 /* LaunchScreen.storyboard in Resources */,
 				EAB545D426FF2F1E000D0354 /* Assets.xcassets in Resources */,
-				EAB545D226FF2F1A000D0354 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +150,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAB545CF26FF2F1A000D0354 /* ViewController.swift in Sources */,
+				EAB545DF26FF302E000D0354 /* TodayViewController.swift in Sources */,
+				EAB545CF26FF2F1A000D0354 /* TabBarController.swift in Sources */,
+				EAB545E426FF34A3000D0354 /* WeatherCell.swift in Sources */,
 				EAB545CB26FF2F19000D0354 /* AppDelegate.swift in Sources */,
 				EAB545CD26FF2F1A000D0354 /* SceneDelegate.swift in Sources */,
+				EAB545E126FF3041000D0354 /* ForecastViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EAB545D026FF2F1A000D0354 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EAB545D126FF2F1A000D0354 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EAB545D526FF2F1E000D0354 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
