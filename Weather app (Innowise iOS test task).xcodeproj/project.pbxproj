@@ -16,6 +16,7 @@
 		EAB545E126FF3041000D0354 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545E026FF3041000D0354 /* ForecastViewController.swift */; };
 		EAB545E426FF34A3000D0354 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545E326FF34A3000D0354 /* WeatherCell.swift */; };
 		EAB545E7270222F4000D0354 /* TodayWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545E6270222F4000D0354 /* TodayWeatherData.swift */; };
+		EAB545E927023814000D0354 /* TodayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545E827023814000D0354 /* TodayWeather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		EAB545E026FF3041000D0354 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		EAB545E326FF34A3000D0354 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		EAB545E6270222F4000D0354 /* TodayWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherData.swift; sourceTree = "<group>"; };
+		EAB545E827023814000D0354 /* TodayWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		EAB545E5270222CD000D0354 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EAB545E827023814000D0354 /* TodayWeather.swift */,
 				EAB545E6270222F4000D0354 /* TodayWeatherData.swift */,
 			);
 			path = Models;
@@ -167,6 +170,7 @@
 				EAB545CB26FF2F19000D0354 /* AppDelegate.swift in Sources */,
 				EAB545CD26FF2F1A000D0354 /* SceneDelegate.swift in Sources */,
 				EAB545E126FF3041000D0354 /* ForecastViewController.swift in Sources */,
+				EAB545E927023814000D0354 /* TodayWeather.swift in Sources */,
 				EAB545E7270222F4000D0354 /* TodayWeatherData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
