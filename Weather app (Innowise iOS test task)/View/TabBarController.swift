@@ -13,14 +13,15 @@ class TabBarController: UITabBarController{
         super.viewDidLoad()
        
         let todayVC = TodayViewController()
-        let forecastVC = ForecastViewController()
+//        let forecastVC = ForecastViewController()
+        let forecastVC = UINavigationController(rootViewController: ForecastViewController())
+        
         
         todayVC.title = "Today"
-        todayVC.view.backgroundColor = .gray
+        todayVC.view.backgroundColor = .white
         todayVC.tabBarItem.image = UIImage(systemName: "sun.max")
         
         forecastVC.title = "Forecast"
-//        forecastVC.view.backgroundColor = .systemGray
         forecastVC.tabBarItem.image = UIImage(systemName: "cloud.moon")
         
         self.setViewControllers([todayVC, forecastVC], animated: false)
