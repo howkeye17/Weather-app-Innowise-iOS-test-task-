@@ -48,4 +48,25 @@ struct Wind: Codable {
         case speed
         case direction = "deg"
     }
+
+
+/*
+//MARK: deg to compass
+
+let degDirection: Int
+var compassDirection: String {
+    switch degDirection {
+    case 0...22, 339...359: return "N"
+    case 23...67: return "NE"
+    case 68...112: return "E"
+    case 113...157: return "SE"
+    case 158...202: return "S"
+    case 203...248: return "SW"
+    case 249...294: return "W"
+    case 295...338: return "NW"
+    default: return "n/a"
+    }
 }
+*/
+}
+
