@@ -9,8 +9,9 @@ import UIKit
 
 class TodayViewController: UIViewController {
 
-// MARK: UI elements
+    var todayViewModel: TodayViewModel?
     
+// MARK: UI elements
     private let todayLabel: UILabel = {
         let label = UILabel()
         label.text = "Today"
@@ -247,13 +248,31 @@ class TodayViewController: UIViewController {
     }()
     
     
-    
+// MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupView()
+        
+        todayViewModel = TodayViewModel()
+        todayViewModel?.locationManager.requestWhenInUseAuthorization()
+//        todayViewModel?.locationManager.startUpdatingLocation()
+        
+//        todayViewModel?.networkManager.todayCompletion = { weather in
+//            self.todayViewModel?.updateInterface(withWeather: weather, completion: {
+//                print(weather)
+//            })
+//        }
+        
+        todayViewModel?.fetchWeather { [weak self] in
+            guard let self = self else { return }
+            self.updateInterface()
+            
+        }
     }
     
+    private func updateInterface() {
+        
+    }
 
     private func setupView() {
         var constraints = [NSLayoutConstraint]()

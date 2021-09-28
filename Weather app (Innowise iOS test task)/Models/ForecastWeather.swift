@@ -32,7 +32,7 @@ struct ForecastWeather {
     
     init?(forecastWeatherData: ForecastWeatherData) {
         cityName = forecastWeatherData.city.name
-        date = forecastWeatherData.todayWeatherData.first!.dateText
+        date = forecastWeatherData.todayWeatherData.first!.dateText ?? ""
         statusOfWeather = forecastWeatherData.todayWeatherData.first!.weather.first!.status
         forecastConditionCode = forecastWeatherData.todayWeatherData.first!.weather.first!.id
         forecastTemperature = forecastWeatherData.todayWeatherData.first!.main.temp

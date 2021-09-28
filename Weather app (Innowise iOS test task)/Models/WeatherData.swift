@@ -20,9 +20,9 @@ struct TodayWeatherData: Codable {
     let name: String  // cityName
     let main: Main
     let wind: Wind
-    let rain: Rain
+    let rain: Rain?
     let weather: [Weather]
-    let dateText: String
+    let dateText: String?
     
     enum CodingKeys: String, CodingKey {
         case name, main, wind, rain, weather
@@ -35,10 +35,10 @@ struct Main: Codable {
     let humidity: Int
 }
 struct Rain: Codable {
-    let rain: Double?  // rain amoun for the last 1h
+    let rain: Double  // rain amoun for the last 1h
     
     enum CodingKeys: String, CodingKey {
-        case rain = "1h"
+        case rain = "3h"
     }
 }
 struct Weather: Codable {

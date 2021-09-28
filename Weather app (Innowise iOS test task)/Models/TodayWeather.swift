@@ -62,7 +62,7 @@ struct TodayWeather {
         weatherStatus = todayWeatherData.weather.first!.status
         todayConditionCode = todayWeatherData.weather.first!.id
         humidity = todayWeatherData.main.humidity
-        rainAmount = todayWeatherData.rain.rain ?? 0.0
+        rainAmount = todayWeatherData.rain?.rain ?? 0.0
         pressure = todayWeatherData.main.pressure
         windSpeed = todayWeatherData.wind.speed
         windDirection = todayWeatherData.wind.direction
