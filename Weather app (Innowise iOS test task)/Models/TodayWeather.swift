@@ -18,9 +18,9 @@ struct TodayWeather {
     
     let weatherStatus: String
     
-    let conditionCode: Int
+    let todayConditionCode: Int
     var systemIconNameString: String {
-        switch conditionCode {
+        switch todayConditionCode {
         case 200...232: return "cloud.bolt.rain.fill"
         case 300...321: return "cloud.drizzle.fill"
         case 500...531: return "cloud.rain.fill"
@@ -60,7 +60,7 @@ struct TodayWeather {
         cityName = todayWeatherData.name
         temperature = todayWeatherData.main.temp
         weatherStatus = todayWeatherData.weather.first!.status
-        conditionCode = todayWeatherData.weather.first!.id
+        todayConditionCode = todayWeatherData.weather.first!.id
         humidity = todayWeatherData.main.humidity
         rainAmount = todayWeatherData.rain.rain ?? 0.0
         pressure = todayWeatherData.main.pressure
