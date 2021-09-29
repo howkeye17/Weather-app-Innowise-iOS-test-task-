@@ -9,7 +9,7 @@ import Foundation
 
 struct TodayWeatherData: Codable {
     let name: String?  // cityName
-    let main: Main
+    let main: Main?
     let wind: Wind?
     let rain: Rain?
     let weather: [WeatherElement]?
@@ -29,7 +29,7 @@ struct Rain: Codable {
     let rain: Double  // rain amoun for the last 1h
     
     enum CodingKeys: String, CodingKey {
-        case rain = "1h"
+        case rain = "3h"
     }
 }
 struct WeatherElement: Codable {

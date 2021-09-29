@@ -9,11 +9,20 @@ import UIKit
 
 class ForecastViewController: UITableViewController {
     
+    private var forecstViewModel: ForecastViewModelProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(WeatherCell.self, forCellReuseIdentifier: WeatherCell.reuseId)
         
+        tableView.register(WeatherCell.self, forCellReuseIdentifier: WeatherCell.reuseId)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        forecstViewModel = ForecastViewModel()
+        forecstViewModel?.fetchForecastAndUpdateInterface()
+    }
+    
 
     // MARK: - Table view data source
 

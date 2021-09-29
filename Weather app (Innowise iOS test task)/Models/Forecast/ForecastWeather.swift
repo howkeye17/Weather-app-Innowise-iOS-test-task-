@@ -40,6 +40,6 @@ struct ForecastWeather {
         date = forecastWeatherData.todayWeatherData?.first!.dateText
         statusOfWeather = forecastWeatherData.todayWeatherData?.first!.weather?.first!.status
         condition = forecastWeatherData.todayWeatherData?.first!.weather?.first!.id
-        forecastTemperature = forecastWeatherData.todayWeatherData?.first!.main.temp
+        forecastTemperature = forecastWeatherData.todayWeatherData?.first!.main?.temp
     }
 }

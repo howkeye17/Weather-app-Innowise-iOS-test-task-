@@ -5,15 +5,20 @@
 //  Created by Valera Vasilevich on 28.09.21.
 //
 
+protocol TodayViewModelProtocol {
+    func fetchWeatherAndUpdateInterface()
+}
+
 import Foundation
 
 
-class TodayViewModel: NSObject {
+class TodayViewModel: NSObject, TodayViewModelProtocol {
     
-    var networkManager = NetworkWeatherManager()
 
-    func fetchWeatheAndUpdateInterface() {
-        networkManager.getWeatherData(forRequestType: .today) { weather in
+    private let networkManager = NetworkWeatherManager()
+
+    func fetchWeatherAndUpdateInterface() {
+        networkManager.getTodayWeatherData(forRequestType: .today) { weather in
             print(weather)
         }
     }

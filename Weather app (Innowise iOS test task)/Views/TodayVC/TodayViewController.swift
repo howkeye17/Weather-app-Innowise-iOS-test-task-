@@ -9,7 +9,7 @@ import UIKit
 
 class TodayViewController: UIViewController {
 
-    var todayViewModel: TodayViewModel?
+    private var todayViewModel: TodayViewModelProtocol?
     
 // MARK: UI elements
     private let todayLabel: UILabel = {
@@ -253,10 +253,15 @@ class TodayViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         todayViewModel = TodayViewModel()
-        todayViewModel?.fetchWeatheAndUpdateInterface()
+        todayViewModel?.fetchWeatherAndUpdateInterface()
     }
     
+}
+ 
 
+// MARK: Extension for setting up view
+extension TodayViewController {
+    
     private func setupView() {
         var constraints = [NSLayoutConstraint]()
         
@@ -276,7 +281,7 @@ class TodayViewController: UIViewController {
         constraints.append(weatherImage.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor))
         constraints.append(weatherImage.heightAnchor.constraint(equalTo: topContainerView.heightAnchor))
         constraints.append(weatherImage.widthAnchor.constraint(equalTo: topContainerView.widthAnchor))
-
+        
         topStackView.addArrangedSubview(cityLabel)
         topStackView.addArrangedSubview(weatherLabel)
         view.addSubview(topStackView)
@@ -328,8 +333,8 @@ class TodayViewController: UIViewController {
         constraints.append(shareButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
         constraints.append(shareButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor))
         constraints.append(shareButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10))
-    
+        
         NSLayoutConstraint.activate(constraints)
     }
-
+    
 }

@@ -5,12 +5,12 @@
 //  Created by Valera Vasilevich on 29.09.21.
 //
 
-import CoreLocation
-import Foundation
-
 protocol LocationManagerProtocol {
     func getCurrrentLocation(completionHandler: @escaping ((CLLocation) -> Void))
 }
+
+import CoreLocation
+import Foundation
 
 class LocationManager: NSObject, LocationManagerProtocol {
     

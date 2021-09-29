@@ -7,7 +7,6 @@
 import CoreLocation
 import Foundation
 
-
 class NetworkWeatherManager: NSObject {
     
     enum RequestType {
@@ -25,9 +24,19 @@ class NetworkWeatherManager: NSObject {
         locationManager = LocationManager()
     }
     
-    func getWeatherData(forRequestType requestType: RequestType, completion : @escaping ((TodayWeatherData) -> Void)) {
+    func getTodayWeatherData(forRequestType requestType: RequestType, completion : @escaping ((TodayWeatherData) -> Void)) {
         self.requestType = requestType
         self.todayCompletion = completion
+        locationManager?.getCurrrentLocation(completionHandler: { [weak self] location in
+            guard let self = self else { return }
+            self.makeWeatherRequest(forCoordinatesLatitude: location.coordinate.latitude,
+                                    longitude: location.coordinate.longitude)
+        })
+    }
+    
+    func getForecastWeatherData(forRequestType requestType: RequestType, completion : @escaping ((ForecastWeatherData) -> Void)) {
+        self.requestType = requestType
+        self.forecastCompletion = completion
         locationManager?.getCurrrentLocation(completionHandler: { [weak self] location in
             guard let self = self else { return }
             self.makeWeatherRequest(forCoordinatesLatitude: location.coordinate.latitude,
@@ -60,11 +69,11 @@ class NetworkWeatherManager: NSObject {
                     }
                     
                 } catch let error as NSError {
-                    print(error.localizedDescription)
+                    print(error)
                 }
             }
             else {
-                print(error!.localizedDescription)
+                print(error!)
             }
         }
         task.resume()
