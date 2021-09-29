@@ -8,41 +8,59 @@ import CoreLocation
 import Foundation
 
 
-class NetworkWeatherManager {
+class NetworkWeatherManager: NSObject {
     
-    private let apiKey = "feb82fdae10fd78c3c736344c9a78e08"
     enum RequestType {
         case today
         case forecast
     }
-    var todayCompletion: ((TodayWeather) -> Void)?
-    var forecastCompletion: ((ForecastWeather) -> Void)?
+    private var locationManager: LocationManagerProtocol?
+    private let apiKey = "feb82fdae10fd78c3c736344c9a78e08"
+    private var todayCompletion: ((TodayWeatherData) -> Void)?
+    private var forecastCompletion: ((ForecastWeatherData) -> Void)?
+    private var requestType: RequestType?
+    
+    override init() {
+        super.init()
+        locationManager = LocationManager()
+    }
+    
+    func getWeatherData(forRequestType requestType: RequestType, completion : @escaping ((TodayWeatherData) -> Void)) {
+        self.requestType = requestType
+        self.todayCompletion = completion
+        locationManager?.getCurrrentLocation(completionHandler: { [weak self] location in
+            guard let self = self else { return }
+            self.makeWeatherRequest(forCoordinatesLatitude: location.coordinate.latitude,
+                                    longitude: location.coordinate.longitude)
+        })
+    }
     
     
-    
-    func makeWeatherRequest(forRequestType requestType: RequestType,
-                            forCoordinatesLatitude latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    private func makeWeatherRequest(forCoordinatesLatitude latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         var urlString = ""
-              
+        
         switch requestType {
         case .today: urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)&units=metric"
         case .forecast: urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)&units=metric"
+        case .none: return
         }
-        
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, error in
-            
             if let data = data, error == nil {
-                switch requestType {
-                case .today: let todayResopse = self.todayWeatherData(withData: data);
-                    if let todayResopse = todayResopse {
-                        self.todayCompletion?(todayResopse)
+                let decoder = JSONDecoder()
+                do {
+                    switch self.requestType {
+                    case .today:
+                        let weatherData = try decoder.decode(TodayWeatherData.self, from: data)
+                        self.todayCompletion?(weatherData)
+                    case .forecast: let weatherData = try decoder.decode(ForecastWeatherData.self, from: data)
+                        self.forecastCompletion?(weatherData)
+                    case .none: return
                     }
-                case .forecast: let forecastResopse = self.forecastWeatherData(withData: data);
-                    if let forecastResopse = forecastResopse {
-                        self.forecastCompletion?(forecastResopse)
-                    }
+                    
+                } catch let error as NSError {
+                    print(error.localizedDescription)
                 }
             }
             else {
@@ -52,30 +70,5 @@ class NetworkWeatherManager {
         task.resume()
     }
     
-    
-    private func todayWeatherData(withData data: Data) -> TodayWeather? {
-        let decoder = JSONDecoder()
-        do {
-            let todayWeatherData = try decoder.decode(TodayWeatherData.self, from: data)
-            guard let todayWeather = TodayWeather(todayWeatherData: todayWeatherData) else { return nil }
-            return todayWeather
-        } catch let error as NSError {
-            print(error)
-        }
-        return nil
-    }
-    
-    private func forecastWeatherData(withData data: Data) -> ForecastWeather? {
-       let decoder = JSONDecoder()
-        do {
-            let forecastWeatherData = try decoder.decode(ForecastWeatherData.self, from: data)
-            guard let forecastWeather = ForecastWeather(forecastWeatherData: forecastWeatherData) else { return nil }
-            return forecastWeather
-        } catch let error as NSError {
-            print(error)
-        }
-      return nil
-    }
 }
-
 

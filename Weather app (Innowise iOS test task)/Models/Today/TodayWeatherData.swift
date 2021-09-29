@@ -7,21 +7,12 @@
 
 import Foundation
 
-struct ForecastWeatherData: Codable {
-    let todayWeatherData: [TodayWeatherData]
-    let city: City
-    
-    enum CodingKeys: String, CodingKey {
-        case todayWeatherData = "list"
-        case city
-    }
-}
 struct TodayWeatherData: Codable {
-    let name: String  // cityName
+    let name: String?  // cityName
     let main: Main
-    let wind: Wind
+    let wind: Wind?
     let rain: Rain?
-    let weather: [Weather]
+    let weather: [WeatherElement]?
     let dateText: String?
     
     enum CodingKeys: String, CodingKey {
@@ -30,18 +21,18 @@ struct TodayWeatherData: Codable {
     }
 }
 struct Main: Codable {
-    let temp: Double //temperature
-    let pressure: Int
-    let humidity: Int
+    let temp: Double? //temperature
+    let pressure: Int?
+    let humidity: Int?
 }
 struct Rain: Codable {
     let rain: Double  // rain amoun for the last 1h
     
     enum CodingKeys: String, CodingKey {
-        case rain = "3h"
+        case rain = "1h"
     }
 }
-struct Weather: Codable {
+struct WeatherElement: Codable {
     let id: Int   // conditionCode for weather status image
     let status: String // status(cloud, sun etc..)
     
@@ -59,7 +50,5 @@ struct Wind: Codable {
         case direction = "deg"
     }
 }
-struct City: Codable {
-    let name: String
-}
+
 

@@ -29,17 +29,17 @@ class TodayViewController: UIViewController {
         return view
     }()
     
-    private let weatherImage: UIImageView = {
+    let weatherImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "sun.max")
+        image.image = UIImage(systemName: "nosign")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
-    private let cityLabel: UILabel = {
+    let cityLabel: UILabel = {
         let label = UILabel()
-        label.text = "New York, USA"
+        label.text = "--------"
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 24)
         label.textColor = UIColor(named: "AccentColor")
@@ -48,9 +48,9 @@ class TodayViewController: UIViewController {
         return label
     }()
     
-    private let weatherLabel: UILabel = {
+    let weatherLabel: UILabel = {
         let label = UILabel()
-        label.text = "22ºC  |  Sunny"
+        label.text = "---------"
         label.font = UIFont.systemFont(ofSize: 28)
         label.textColor = UIColor(named: "AccentColor")
         label.textAlignment = .center
@@ -109,7 +109,7 @@ class TodayViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    private let chancesStackView: UIStackView = {
+    private let humidityStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -117,23 +117,23 @@ class TodayViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    private let chancesOfRainImage: UIImageView = {
+    private let humidityImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "rain")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    private let chancesOfRainLabel: UILabel = {
+    let humidityLabel: UILabel = {
         let label = UILabel()
-        label.text = "55 %"
+        label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = UIColor(named: "AccentColor")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let falloutStackView: UIStackView = {
+    private let precipitationStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -141,16 +141,16 @@ class TodayViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    private let falloutImage: UIImageView = {
+    private let precipitationImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "drop")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    private let falloutLabel: UILabel = {
+    let precipitationLabel: UILabel = {
         let label = UILabel()
-        label.text = "1.0 mm"
+        label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = UIColor(named: "AccentColor")
         label.textAlignment = .center
@@ -172,9 +172,9 @@ class TodayViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    private let pressureLabel: UILabel = {
+    let pressureLabel: UILabel = {
         let label = UILabel()
-        label.text = "1029 hPa"
+        label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = UIColor(named: "AccentColor")
         label.textAlignment = .center
@@ -205,9 +205,9 @@ class TodayViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    private let windLabel: UILabel = {
+    let windLabel: UILabel = {
         let label = UILabel()
-        label.text = "20 km/h"
+        label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = UIColor(named: "AccentColor")
         label.textAlignment = .center
@@ -229,9 +229,9 @@ class TodayViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    private let directionLabel: UILabel = {
+    let directionLabel: UILabel = {
         let label = UILabel()
-        label.text = "SE"
+        label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = UIColor(named: "AccentColor")
         label.textAlignment = .center
@@ -252,27 +252,10 @@ class TodayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
         todayViewModel = TodayViewModel()
-        todayViewModel?.locationManager.requestWhenInUseAuthorization()
-//        todayViewModel?.locationManager.startUpdatingLocation()
-        
-//        todayViewModel?.networkManager.todayCompletion = { weather in
-//            self.todayViewModel?.updateInterface(withWeather: weather, completion: {
-//                print(weather)
-//            })
-//        }
-        
-        todayViewModel?.fetchWeather { [weak self] in
-            guard let self = self else { return }
-            self.updateInterface()
-            
-        }
+        todayViewModel?.fetchWeatheAndUpdateInterface()
     }
     
-    private func updateInterface() {
-        
-    }
 
     private func setupView() {
         var constraints = [NSLayoutConstraint]()
@@ -309,15 +292,15 @@ class TodayViewController: UIViewController {
         constraints.append(textView1.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24))
         constraints.append(textView1.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24))
         
-        chancesStackView.addArrangedSubview(chancesOfRainImage)
-        chancesStackView.addArrangedSubview(chancesOfRainLabel)
-        falloutStackView.addArrangedSubview(falloutImage)
-        falloutStackView.addArrangedSubview(falloutLabel)
+        humidityStackView.addArrangedSubview(humidityImage)
+        humidityStackView.addArrangedSubview(humidityLabel)
+        precipitationStackView.addArrangedSubview(precipitationImage)
+        precipitationStackView.addArrangedSubview(precipitationLabel)
         pressureStackView.addArrangedSubview(pressureImage)
         pressureStackView.addArrangedSubview(pressureLabel)
         view.addSubview(centerStackView)
-        centerStackView.addArrangedSubview(chancesStackView)
-        centerStackView.addArrangedSubview(falloutStackView)
+        centerStackView.addArrangedSubview(humidityStackView)
+        centerStackView.addArrangedSubview(precipitationStackView)
         centerStackView.addArrangedSubview(pressureStackView)
         constraints.append(centerStackView.topAnchor.constraint(equalTo: textView1.bottomAnchor,constant: -8))
         constraints.append(centerStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
