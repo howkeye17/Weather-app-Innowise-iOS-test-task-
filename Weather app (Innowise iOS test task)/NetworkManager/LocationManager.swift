@@ -38,7 +38,7 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        print("Something went wrong: \(error.localizedDescription)")
         self.locationManager.stopUpdatingLocation()
     }
     

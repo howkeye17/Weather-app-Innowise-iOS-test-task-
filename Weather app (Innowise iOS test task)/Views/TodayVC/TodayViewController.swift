@@ -8,10 +8,10 @@
 import UIKit
 
 class TodayViewController: UIViewController {
-
-    private var todayViewModel: TodayViewModelProtocol?
     
-// MARK: UI elements
+    private var todayViewModel: TodayViewModel?
+    
+    // MARK: UI elements
     private let todayLabel: UILabel = {
         let label = UILabel()
         label.text = "Today"
@@ -29,7 +29,7 @@ class TodayViewController: UIViewController {
         return view
     }()
     
-    let weatherImage: UIImageView = {
+    private let weatherImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "nosign")
         image.contentMode = .scaleAspectFit
@@ -37,7 +37,7 @@ class TodayViewController: UIViewController {
         return image
     }()
     
-    let cityLabel: UILabel = {
+    private let cityLabel: UILabel = {
         let label = UILabel()
         label.text = "--------"
         label.numberOfLines = 0
@@ -48,7 +48,7 @@ class TodayViewController: UIViewController {
         return label
     }()
     
-    let weatherLabel: UILabel = {
+    private let weatherLabel: UILabel = {
         let label = UILabel()
         label.text = "---------"
         label.font = UIFont.systemFont(ofSize: 28)
@@ -59,7 +59,7 @@ class TodayViewController: UIViewController {
     }()
     
     private let topStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalCentering
         stackView.alignment = .center
@@ -102,7 +102,7 @@ class TodayViewController: UIViewController {
     }()
     
     private let centerStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -110,7 +110,7 @@ class TodayViewController: UIViewController {
         return stackView
     }()
     private let humidityStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -124,7 +124,7 @@ class TodayViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    let humidityLabel: UILabel = {
+    private let humidityLabel: UILabel = {
         let label = UILabel()
         label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
@@ -134,7 +134,7 @@ class TodayViewController: UIViewController {
         return label
     }()
     private let precipitationStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -148,7 +148,7 @@ class TodayViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    let precipitationLabel: UILabel = {
+    private let precipitationLabel: UILabel = {
         let label = UILabel()
         label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
@@ -158,7 +158,7 @@ class TodayViewController: UIViewController {
         return label
     }()
     private let pressureStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -172,7 +172,7 @@ class TodayViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    let pressureLabel: UILabel = {
+    private let pressureLabel: UILabel = {
         let label = UILabel()
         label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
@@ -183,7 +183,7 @@ class TodayViewController: UIViewController {
     }()
     
     private let bottomStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -191,7 +191,7 @@ class TodayViewController: UIViewController {
         return stackView
     }()
     private let windStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -205,7 +205,7 @@ class TodayViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    let windLabel: UILabel = {
+    private let windLabel: UILabel = {
         let label = UILabel()
         label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
@@ -215,7 +215,7 @@ class TodayViewController: UIViewController {
         return label
     }()
     private let directionStackView: UIStackView = {
-       let stackView = UIStackView()
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -229,7 +229,7 @@ class TodayViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    let directionLabel: UILabel = {
+    private let directionLabel: UILabel = {
         let label = UILabel()
         label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
@@ -248,17 +248,34 @@ class TodayViewController: UIViewController {
     }()
     
     
-// MARK: View Lifecycle
+    // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         todayViewModel = TodayViewModel()
-        todayViewModel?.fetchWeatherAndUpdateInterface()
+        
     }
     
-}
- 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        todayViewModel?.fetchWeatherForToday { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.view.subviews.forEach { $0.isHidden = false }
+                self.weatherImage.image = UIImage(systemName: self.todayViewModel?.weatherIcon ?? "nosign")
+                self.cityLabel.text = self.todayViewModel?.cityName
+                self.weatherLabel.text = self.todayViewModel?.weatherLabel
+                self.humidityLabel.text = self.todayViewModel?.humidity
+                self.precipitationLabel.text = self.todayViewModel?.precipitation
+                self.pressureLabel.text = self.todayViewModel?.pressure
+                self.windLabel.text = self.todayViewModel?.windSpeed
+                self.directionLabel.text = self.todayViewModel?.windDirection
+            }
+        }
+    }
 
+}
 // MARK: Extension for setting up view
 extension TodayViewController {
     
@@ -335,6 +352,7 @@ extension TodayViewController {
         constraints.append(shareButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10))
         
         NSLayoutConstraint.activate(constraints)
+        view.subviews.forEach { $0.isHidden = true }
     }
     
 }

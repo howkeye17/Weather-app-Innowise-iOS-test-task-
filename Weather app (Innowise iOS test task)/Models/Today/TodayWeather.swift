@@ -10,6 +10,10 @@ import Foundation
 struct TodayWeather {
 
     let cityName: String?
+    var currentCity: String {
+        guard let city = cityName else { return "no data" }
+        return city
+    }
     
     let temperature: Double?
     var temperatureString: String {
@@ -18,6 +22,10 @@ struct TodayWeather {
     }
     
     let weatherStatus: String?
+    var todayWeatherStatus: String {
+        guard let status = weatherStatus else { return "no data" }
+        return status
+    }
     
     let todayConditionCode: Int?
     var conditionCode: Int {
@@ -38,13 +46,25 @@ struct TodayWeather {
     }
     
     let humidity: Int?
+    var todayHumidity: String {
+        guard let todayHumidity = humidity else { return "no data"}
+        return "\(todayHumidity)"
+    }
     let rainAmount: Double?
+    var precipitationAmount: String {
+        guard let precipitation = rainAmount else { return "0.0" }
+        return "\(precipitation)"
+    }
     let pressure: Int?
+    var todayPressure: String {
+        guard let pressure = pressure else { return "no data" }
+        return "\(pressure)"
+    }
     
     let windSpeed: Double?
-    var windKmH: Int {
-        guard let windSpeed = windSpeed else { return 0 }
-        return (Int(windSpeed) * 3600) / 1000
+    var windKmH: String {
+        guard let windSpeed = windSpeed else { return "no data" }
+        return "\((Int(windSpeed) * 3600) / 1000)"
     }
     let direction: Int?
     var windDirection: Int {
@@ -61,7 +81,7 @@ struct TodayWeather {
         case 203...248: return "SW"
         case 249...294: return "W"
         case 295...338: return "NW"
-        default: return "n/a"
+        default: return "no data"
         }
     }
     

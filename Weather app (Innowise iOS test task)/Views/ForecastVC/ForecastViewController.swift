@@ -20,7 +20,7 @@ class ForecastViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         forecstViewModel = ForecastViewModel()
-        forecstViewModel?.fetchForecastAndUpdateInterface()
+        forecstViewModel?.fetchWeatherForecast()
     }
     
 

@@ -15,7 +15,7 @@ class NetworkWeatherManager: NSObject {
     }
     private var locationManager: LocationManagerProtocol?
     private let apiKey = "feb82fdae10fd78c3c736344c9a78e08"
-    private var todayCompletion: ((TodayWeatherData) -> Void)?
+    private var todayCompletion: ((TodayWeather) -> Void)?
     private var forecastCompletion: ((ForecastWeatherData) -> Void)?
     private var requestType: RequestType?
     
@@ -24,7 +24,7 @@ class NetworkWeatherManager: NSObject {
         locationManager = LocationManager()
     }
     
-    func getTodayWeatherData(forRequestType requestType: RequestType, completion : @escaping ((TodayWeatherData) -> Void)) {
+    func getTodayWeatherData(forRequestType requestType: RequestType, completion : @escaping ((TodayWeather) -> Void)) {
         self.requestType = requestType
         self.todayCompletion = completion
         locationManager?.getCurrrentLocation(completionHandler: { [weak self] location in
@@ -62,18 +62,19 @@ class NetworkWeatherManager: NSObject {
                     switch self.requestType {
                     case .today:
                         let weatherData = try decoder.decode(TodayWeatherData.self, from: data)
-                        self.todayCompletion?(weatherData)
+                        guard let weather = TodayWeather(todayWeatherData: weatherData) else { return }
+                        self.todayCompletion?(weather)
                     case .forecast: let weatherData = try decoder.decode(ForecastWeatherData.self, from: data)
                         self.forecastCompletion?(weatherData)
                     case .none: return
                     }
                     
                 } catch let error as NSError {
-                    print(error)
+                    print(error.localizedDescription)
                 }
             }
             else {
-                print(error!)
+                print(error!.localizedDescription)
             }
         }
         task.resume()

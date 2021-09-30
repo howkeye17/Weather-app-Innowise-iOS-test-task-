@@ -5,7 +5,7 @@
 //  Created by Valera Vasilevich on 28.09.21.
 //
 protocol ForecastViewModelProtocol {
-    func fetchForecastAndUpdateInterface()
+    func fetchWeatherForecast()
 }
 
 
@@ -14,10 +14,10 @@ class ForecastViewModel: NSObject, ForecastViewModelProtocol {
    
     private let networkManager = NetworkWeatherManager()
     
-    func fetchForecastAndUpdateInterface() {
+    func fetchWeatherForecast() {
         networkManager.getForecastWeatherData(forRequestType: .forecast) { forecast in
             
-            print(forecast)
+//            print(forecast)
         
         }
     }
