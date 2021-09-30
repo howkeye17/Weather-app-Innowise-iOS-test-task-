@@ -8,10 +8,10 @@ import Foundation
 
 class TodayViewModel {
     
-//MARK: Properties for TodayViewModel
+//MARK: - Properties for TodayViewModel
     private let networkManager = NetworkWeatherManager()
     
-//MARK: Properties for TodayVC
+//MARK: - Properties for TodayVC
     var cityName = ""
     var temperature = ""
     var weatherStatus = ""
@@ -23,7 +23,7 @@ class TodayViewModel {
     var windDirection = ""
     var weatherLabel = ""
     
-//MARK: TodayViewModel methods
+//MARK: - TodayViewModel methods
     
     func fetchWeatherForToday(completion: @escaping ()-> ()) {
         networkManager.getTodayWeatherData(forRequestType: .today) { weather in

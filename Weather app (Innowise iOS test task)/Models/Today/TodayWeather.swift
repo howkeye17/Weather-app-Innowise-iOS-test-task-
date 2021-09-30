@@ -4,7 +4,6 @@
 //
 //  Created by Valera Vasilevich on 27.09.21.
 //
-
 import Foundation
 
 struct TodayWeather {
@@ -91,7 +90,7 @@ struct TodayWeather {
         weatherStatus = todayWeatherData.weather?.first!.status
         todayConditionCode = todayWeatherData.weather?.first!.id
         humidity = todayWeatherData.main?.humidity
-        rainAmount = todayWeatherData.rain?.rain ?? 0.0
+        rainAmount = todayWeatherData.rain?.oneHourRain
         pressure = todayWeatherData.main?.pressure
         windSpeed = todayWeatherData.wind?.speed
         direction = todayWeatherData.wind?.direction

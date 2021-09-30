@@ -15,10 +15,14 @@ class ForecastViewModel: NSObject, ForecastViewModelProtocol {
     private let networkManager = NetworkWeatherManager()
     
     func fetchWeatherForecast() {
-        networkManager.getForecastWeatherData(forRequestType: .forecast) { forecast in
+        networkManager.getForecastWeatherData(forRequestType: .forecast) { forecastData in
+            guard let forecast = forecastData.todayWeatherData, let city = forecastData.city else { return }
             
-//            print(forecast)
-        
+            let mappedForecast = forecast.compactMap { ForecastWeather(forecastWeatherData: $0) }
+            //            print(forecast)
+            print(city)
+            print("--------")
+            print(mappedForecast)
         }
     }
     

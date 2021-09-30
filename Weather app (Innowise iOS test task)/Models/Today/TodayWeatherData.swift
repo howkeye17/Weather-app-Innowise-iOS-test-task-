@@ -26,9 +26,11 @@ struct Main: Codable {
     let humidity: Int?
 }
 struct Rain: Codable {
-    let rain: Double  // rain amoun for the last 1h
+    let rain: Double?  // rain amoun for the last 3h
+    let oneHourRain: Double?
     
     enum CodingKeys: String, CodingKey {
+        case oneHourRain = "1h"
         case rain = "3h"
     }
 }

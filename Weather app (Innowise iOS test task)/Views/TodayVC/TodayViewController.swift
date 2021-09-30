@@ -8,10 +8,10 @@
 import UIKit
 
 class TodayViewController: UIViewController {
-    
+//MARK: - ViewModel
     private var todayViewModel: TodayViewModel?
     
-    // MARK: UI elements
+// MARK: - UI elements
     private let todayLabel: UILabel = {
         let label = UILabel()
         label.text = "Today"
@@ -256,7 +256,7 @@ class TodayViewController: UIViewController {
     }()
     
     
-    // MARK: View Lifecycle
+// MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -270,6 +270,11 @@ class TodayViewController: UIViewController {
             self.updateViewWithTodayWeatherData()
         }
     }
+    
+}
+
+// MARK: - Extension for setting up view
+extension TodayViewController {
     
     private func updateViewWithTodayWeatherData() {
         DispatchQueue.main.async {
@@ -285,10 +290,6 @@ class TodayViewController: UIViewController {
             self.directionLabel.text = self.todayViewModel?.windDirection
         }
     }
-
-}
-// MARK: Extension for setting up view
-extension TodayViewController {
     
     private func setupView() {
         var constraints = [NSLayoutConstraint]()

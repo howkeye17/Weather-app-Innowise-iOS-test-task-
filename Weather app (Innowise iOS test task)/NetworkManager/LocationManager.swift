@@ -29,10 +29,7 @@ class LocationManager: NSObject, LocationManagerProtocol {
 
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-//        let latitude = location.coordinate.latitude
-//        let longitude = location.coordinate.longitude
-        
+        guard let location = locations.first else { return }        
         self.completion?(location)
         self.locationManager.stopUpdatingLocation()
     }
