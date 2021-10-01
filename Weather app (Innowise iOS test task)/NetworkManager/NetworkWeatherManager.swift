@@ -44,7 +44,6 @@ class NetworkWeatherManager: NSObject {
         })
     }
     
-    
     private func makeWeatherRequest(forCoordinatesLatitude latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         var urlString = ""
         
@@ -68,7 +67,6 @@ class NetworkWeatherManager: NSObject {
                         self.forecastCompletion?(weatherData)
                     case .none: return
                     }
-                    
                 } catch let error as NSError {
                     print(error.localizedDescription)
                 }

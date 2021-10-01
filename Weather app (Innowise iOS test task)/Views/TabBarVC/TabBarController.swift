@@ -13,7 +13,6 @@ class TabBarController: UITabBarController{
         super.viewDidLoad()
        
         let todayVC = TodayViewController()
-//        let forecastVC = ForecastViewController()
         let forecastVC = UINavigationController(rootViewController: ForecastViewController())
         
         

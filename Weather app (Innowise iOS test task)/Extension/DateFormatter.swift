@@ -12,13 +12,19 @@ extension DateFormatter {
     enum ForecastDateFormat: String {
         case weekdayDate = "EEEE, dd MMM"
         case currentTime = "HH:mm"
+        case fullFormatDate = "YYYY-MM-dd HH:mm:ss"
     }
     
-    func getDateWith(dateFormat: ForecastDateFormat, date: String) -> String {
-        self.dateFormat = "YYYY-MM-dd HH:mm:ss"
-        guard let weekdayDate = self.date(from: date) else { return "no data"}
+    func fullDate(dateFormat: ForecastDateFormat, date: String?) -> Date? {
+        guard let date = date else { return nil }
         self.dateFormat = dateFormat.rawValue
-        let value = self.string(from: weekdayDate)
+        return self.date(from: date)
+    }
+    
+    func getDateWith(dateFormat: ForecastDateFormat, date: Date?) -> String {
+        guard let date = date else { return "No data" }
+        self.dateFormat = dateFormat.rawValue
+        let value = self.string(from: date)
         return value
     }
 }

@@ -14,17 +14,18 @@ struct ForecastWeather {
 //        return city
 //    }
     let date: String?
-    var weekday: String {
-        guard let date = date else { return "no data"}
+    
+    var fullDate: Date? {
         let dateFormatter = DateFormatter()
-        let weekday = dateFormatter.getDateWith(dateFormat: .weekdayDate, date: date)
-        return weekday
+        return dateFormatter.fullDate(dateFormat: .fullFormatDate, date: date)
+    }
+    var weekday: String {
+        let dateFormatter = DateFormatter()
+        return dateFormatter.getDateWith(dateFormat: .weekdayDate, date: fullDate)
     }
     var currentTime: String {
-        guard let date = date else { return "no data"}
         let dateFormatter = DateFormatter()
-        let currentTime = dateFormatter.getDateWith(dateFormat: .currentTime, date: date)
-        return currentTime
+        return dateFormatter.getDateWith(dateFormat: .currentTime, date: fullDate)
     }
     
     let statusOfWeather: String?
@@ -56,18 +57,17 @@ struct ForecastWeather {
         return String(format: "%.0f", temp)
     }
     
-//    init?(forecastWeatherData: ForecastWeatherData) {
-//        cityName = forecastWeatherData.city?.name
-//        date = forecastWeatherData.todayWeatherData?.first!.dateText
-//        statusOfWeather = forecastWeatherData.todayWeatherData?.first!.weather?.first!.status
-//        condition = forecastWeatherData.todayWeatherData?.first!.weather?.first!.id
-//        forecastTemperature = forecastWeatherData.todayWeatherData?.first!.main?.temp
-//    }
+    let unix: Int?
+    var unixTime: Int {
+        guard let unixTime = unix else { return 0 }
+        return unixTime
+    }
     
     init?(forecastWeatherData: TodayWeatherData) {
         date = forecastWeatherData.dateText
         statusOfWeather = forecastWeatherData.weather?.first!.status
         condition = forecastWeatherData.weather?.first!.id
         forecastTemperature = forecastWeatherData.main?.temp
+        unix = forecastWeatherData.unixTime
     }
 }

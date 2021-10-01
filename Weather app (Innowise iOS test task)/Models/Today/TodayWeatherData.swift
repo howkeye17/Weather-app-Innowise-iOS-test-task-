@@ -9,6 +9,7 @@ import Foundation
 
 struct TodayWeatherData: Codable {
     let name: String?  // cityName
+    let unixTime: Int?
     let main: Main?
     let wind: Wind?
     let rain: Rain?
@@ -17,6 +18,7 @@ struct TodayWeatherData: Codable {
     
     enum CodingKeys: String, CodingKey {
         case name, main, wind, rain, weather
+        case unixTime = "dt"
         case dateText = "dt_txt"
     }
 }
