@@ -14,6 +14,19 @@ struct ForecastWeather {
 //        return city
 //    }
     let date: String?
+    var weekday: String {
+        guard let date = date else { return "no data"}
+        let dateFormatter = DateFormatter()
+        let weekday = dateFormatter.getDateWith(dateFormat: .weekdayDate, date: date)
+        return weekday
+    }
+    var currentTime: String {
+        guard let date = date else { return "no data"}
+        let dateFormatter = DateFormatter()
+        let currentTime = dateFormatter.getDateWith(dateFormat: .currentTime, date: date)
+        return currentTime
+    }
+    
     let statusOfWeather: String?
     var weatherStatus: String {
         guard let status = statusOfWeather else { return "no data" }

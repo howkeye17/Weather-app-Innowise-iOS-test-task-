@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA5F9B7127070A250094A029 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F9B7027070A250094A029 /* DateFormatter.swift */; };
 		EAB545CB26FF2F19000D0354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CA26FF2F19000D0354 /* AppDelegate.swift */; };
 		EAB545CD26FF2F1A000D0354 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CC26FF2F1A000D0354 /* SceneDelegate.swift */; };
 		EAB545CF26FF2F1A000D0354 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CE26FF2F1A000D0354 /* TabBarController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA5F9B7027070A250094A029 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		EAB545C726FF2F19000D0354 /* Weather app (Innowise iOS test task).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather app (Innowise iOS test task).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB545CA26FF2F19000D0354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAB545CC26FF2F1A000D0354 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA5F9B6F27070A010094A029 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EA5F9B7027070A250094A029 /* DateFormatter.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		EAB545BE26FF2F19000D0354 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +92,7 @@
 				EAB545F1270348C5000D0354 /* ViewModels */,
 				EAB545E5270222CD000D0354 /* Models */,
 				EAB545E226FF342A000D0354 /* Views */,
+				EA5F9B6F27070A010094A029 /* Extension */,
 				EAB545D326FF2F1E000D0354 /* Assets.xcassets */,
 				EAB545D826FF2F1E000D0354 /* Info.plist */,
 			);
@@ -255,6 +266,7 @@
 				EAB545CB26FF2F19000D0354 /* AppDelegate.swift in Sources */,
 				EAB545CD26FF2F1A000D0354 /* SceneDelegate.swift in Sources */,
 				EAB545FB2704BD0F000D0354 /* LocationManager.swift in Sources */,
+				EA5F9B7127070A250094A029 /* DateFormatter.swift in Sources */,
 				EAB546022704C57A000D0354 /* ForecastWeather.swift in Sources */,
 				EAB545FF2704C556000D0354 /* TodayWeather.swift in Sources */,
 				EAB545E126FF3041000D0354 /* ForecastViewController.swift in Sources */,

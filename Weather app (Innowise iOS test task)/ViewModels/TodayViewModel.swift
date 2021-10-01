@@ -27,12 +27,12 @@ class TodayViewModel {
     
     func fetchWeatherForToday(completion: @escaping ()-> ()) {
         networkManager.getTodayWeatherData(forRequestType: .today) { weather in
-            self.setParameters(weather: weather)
+            self.setParameters(withTodayWeather: weather)
             completion()
         }
     }
     
-    private func setParameters(weather : TodayWeather) {
+    private func setParameters(withTodayWeather weather: TodayWeather) {
         self.cityName = weather.currentCity
         self.temperature = weather.temperatureString
         self.weatherStatus = weather.todayWeatherStatus

@@ -17,6 +17,6 @@ struct ForecastWeatherData: Codable {
     }
 }
 struct City: Codable {
-    let name: String
+    let name: String?
 }
 
