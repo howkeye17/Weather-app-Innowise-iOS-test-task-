@@ -6,15 +6,14 @@
 //
 
 import UIKit
-
+//MARK: - TabBarController Class
 class TabBarController: UITabBarController{
-
+//MARK: - Lifecycle of the TabBarController
     override func viewDidLoad() {
         super.viewDidLoad()
        
         let todayVC = TodayViewController()
         let forecastVC = UINavigationController(rootViewController: ForecastViewController())
-        
         
         todayVC.title = "Today"
         todayVC.view.backgroundColor = .white

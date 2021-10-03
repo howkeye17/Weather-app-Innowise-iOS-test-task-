@@ -5,14 +5,9 @@
 //  Created by Valera Vasilevich on 28.09.21.
 //
 import Foundation
-
+//MARK: - ForecastWeather Strcut for initialisation of all properties
 struct ForecastWeather {
-    
-//    let cityName: String?
-//    var currentCity: String {
-//        guard let city = cityName else { return "no data" }
-//        return city
-//    }
+//MARK: - Properties
     let date: String?
     
     var fullDate: Date? {
@@ -62,7 +57,7 @@ struct ForecastWeather {
         guard let unixTime = unix else { return 0 }
         return unixTime
     }
-    
+//MARK: - Initialisation
     init?(forecastWeatherData: TodayWeatherData) {
         date = forecastWeatherData.dateText
         statusOfWeather = forecastWeatherData.weather?.first!.status

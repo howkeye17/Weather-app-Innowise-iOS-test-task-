@@ -3,24 +3,28 @@
 //  Weather app (Innowise iOS test task)
 //
 //  Created by Valera Vasilevich on 28.09.21.
-//MARK: - ViewModelProtocol
+import Foundation
+//MARK: - Protocol for ForecastViewModel
 protocol ForecastViewModelProtocol {
-    func fetchWeatherForecast()
+    func fetchWeatherForecast(completion: @escaping ()-> ())
+    func headerViewModel(inSection section: Int) -> HeaderCellViewModelProtocol?
+    func cellViewModel(forIndexPath indexPath: IndexPath) -> WeatherCellViewModelProtocol?
+    func numbersOfSections() -> Int
+    func numberOfRows(inSection section: Int) -> Int
 }
 
-
-import Foundation
 class ForecastViewModel: NSObject, ForecastViewModelProtocol {
-//MARK: - ForecastViewModel propertyes
+//MARK: - ForecastViewModel properties
     private let networkManager = NetworkWeatherManager()
     private var cityName = ""
     private var sortedForecast: [[ForecastWeather]] = []
     
-    func fetchWeatherForecast() {
+//MARK: - ForecastViewModel methods for fetching and preparing data
+    func fetchWeatherForecast(completion: @escaping ()-> ()) {
         networkManager.getForecastWeatherData(forRequestType: .forecast) { forecastData in
             guard let forecast = forecastData.todayWeatherData, let city = forecastData.city else { return }
             self.prepareAllData(withForecast: forecast, city: city)
-            
+            completion()
         }
     }
     
@@ -40,6 +44,25 @@ class ForecastViewModel: NSObject, ForecastViewModelProtocol {
                 let second = secondElement.1[0]
                 return first.unixTime < second.unixTime })
             .compactMap { $1 }
-            }
+    }
+    
+//MARK: - ForecastViewModel methods for updating UI
+    func headerViewModel(inSection section: Int) -> HeaderCellViewModelProtocol? {
+        return HeaderCellViewModel(weatherForecast: sortedForecast, section: section)
+    }
+    
+    func cellViewModel(forIndexPath indexPath: IndexPath) -> WeatherCellViewModelProtocol? {
+        let weatherForecast = sortedForecast[indexPath.section][indexPath.row]
+        return WeatheCellViewModel(weatherForecast: weatherForecast)
+    }
+    
+    func numbersOfSections() -> Int {
+        return sortedForecast.count
+    }
+    
+    func numberOfRows(inSection section: Int) -> Int {
+        return sortedForecast[section].count
+    }
+    
     
 }

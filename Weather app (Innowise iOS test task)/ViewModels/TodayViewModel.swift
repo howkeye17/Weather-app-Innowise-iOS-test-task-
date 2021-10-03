@@ -5,9 +5,22 @@
 //  Created by Valera Vasilevich on 28.09.21.
 //
 import Foundation
+//MARK: Protocol for TodayViewModel
+protocol TodayViewModelProtocol {
+    var cityName: String { get }
+    var temperature: String { get }
+    var weatherStatus: String { get }
+    var weatherIcon: String { get }
+    var humidity: String { get }
+    var precipitation: String { get }
+    var pressure: String { get }
+    var windSpeed: String { get }
+    var windDirection: String { get }
+    var weatherLabel: String { get }
+    func fetchWeatherForToday(completion: @escaping ()-> ())
+}
 
-class TodayViewModel {
-    
+class TodayViewModel: NSObject, TodayViewModelProtocol {
 //MARK: - Properties for TodayViewModel
     private let networkManager = NetworkWeatherManager()
     

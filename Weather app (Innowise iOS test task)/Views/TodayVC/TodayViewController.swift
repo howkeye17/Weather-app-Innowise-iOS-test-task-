@@ -6,12 +6,11 @@
 //
 
 import UIKit
-
+//MARK: - TodayViewController Class
 class TodayViewController: UIViewController {
-//MARK: - ViewModel
-    private var todayViewModel: TodayViewModel?
-    
-// MARK: - UI elements
+//MARK: - ViewModel for TodayViewController
+    private var todayViewModel: TodayViewModelProtocol?
+// MARK: - UI elements for TodayViewController
     private let todayLabel: UILabel = {
         let label = UILabel()
         label.text = "Today"
@@ -21,14 +20,12 @@ class TodayViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     private let topContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .none
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
     private let weatherImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "nosign")
@@ -36,7 +33,6 @@ class TodayViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    
     private let cityLabel: UILabel = {
         let label = UILabel()
         label.text = "--------"
@@ -47,7 +43,6 @@ class TodayViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     private let weatherLabel: UILabel = {
         let label = UILabel()
         label.text = "---------"
@@ -57,7 +52,6 @@ class TodayViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     private let topStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -67,7 +61,6 @@ class TodayViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
     private let locationImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "location")
@@ -75,7 +68,6 @@ class TodayViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    
     private let textView1: UITextView = {
         let textView = UITextView()
         textView.text = "--------------------"
@@ -100,7 +92,6 @@ class TodayViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
-    
     private let centerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -181,7 +172,6 @@ class TodayViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     private let bottomStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -238,7 +228,6 @@ class TodayViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setTitle("Share", for: .normal)
@@ -246,7 +235,6 @@ class TodayViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.startAnimating()
@@ -255,8 +243,7 @@ class TodayViewController: UIViewController {
         return spinner
     }()
     
-    
-// MARK: - View Lifecycle
+// MARK: - Lifecycle of the TodayViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()

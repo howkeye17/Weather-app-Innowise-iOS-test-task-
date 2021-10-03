@@ -6,10 +6,22 @@
 //
 
 import UIKit
-
+//MARK: - Weather Cell class
 class WeatherCell: UITableViewCell {
+//MARK: -Static properties for cell in TableView
     static let reuseId = "weatherCell"
-// MARK: UI elements
+    static let rowHeight: CGFloat = 80
+//MARK: -viewModel for Cell in TableView
+    weak var cellViewModel: WeatherCellViewModelProtocol? {
+        willSet(cellViewModel) {
+            guard let cellViewModel = cellViewModel else { return }
+            weatherImage.image = cellViewModel.weatherImage
+            timeTextView.text = cellViewModel.currentTime
+            weatherTextView.text = cellViewModel.weatherStatus
+            temperatureLabel.text = cellViewModel.temperature
+        }
+    }
+// MARK: - WEatherCell UI elements
     let weatherImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "sun.max")
@@ -34,49 +46,51 @@ class WeatherCell: UITableViewCell {
         textView.isScrollEnabled = false
         return textView
     }()
-    let weatherLabel: UILabel = {
+    let temperatureLabel: UILabel = {
         let label = UILabel()
         label.text = "22ºC"
-        label.font = UIFont.systemFont(ofSize: 30)
         label.textAlignment = .center
         return label
     }()
-// MARK: Init
+// MARK: -Initialisation
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(weatherImage)
         contentView.addSubview(timeTextView)
         contentView.addSubview(weatherTextView)
-        contentView.addSubview(weatherLabel)
+        contentView.addSubview(temperatureLabel)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-// MARK: LayoutSubviews
+// MARK: -LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
         
         let imageSize = contentView.frame.size.height - 24
+        let temperatureSize = imageSize * 1.5
         let textSize = contentView.frame.size.height / 4
-        timeTextView.font = UIFont.systemFont(ofSize: textSize/1.5)
-        weatherTextView.font = UIFont.systemFont(ofSize: textSize/1.5)
+        let textHeight = textSize * 2
+        timeTextView.font = UIFont.systemFont(ofSize: textSize)
+        weatherTextView.font = UIFont.systemFont(ofSize: textSize)
+        temperatureLabel.font = UIFont.systemFont(ofSize: textSize * 1.5)
         
         weatherImage.frame = CGRect(x: 10,
                                     y: (contentView.frame.size.height - imageSize) / 2,
                                     width: imageSize,
                                     height: imageSize)
         timeTextView.frame = CGRect(x: 10 + weatherImage.frame.width + 20,
-                                    y: (contentView.frame.size.height - textSize) / 2 - textSize/2,
+                                    y: (contentView.frame.size.height - textHeight) / 2 - textHeight / 3,
                                     width: 100,
-                                    height: textSize)
+                                    height: textHeight)
         weatherTextView.frame = CGRect(x: 10 + weatherImage.frame.width + 20,
-                                    y: (contentView.frame.size.height - textSize) / 2 + textSize/2,
-                                    width: 100,
-                                    height: textSize)
-        weatherLabel.frame = CGRect(x: (contentView.frame.size.width - imageSize * 1.25),
-                                    y: (contentView.frame.size.height - imageSize) / 2,
-                                    width: imageSize,
-                                    height: imageSize)
+                                       y: (contentView.frame.size.height - textHeight) / 2 + textHeight / 3,
+                                       width: 100,
+                                       height: textHeight)
+        temperatureLabel.frame = CGRect(x: (contentView.frame.size.width - temperatureSize - 20),
+                                        y: (contentView.frame.size.height - temperatureSize) / 2,
+                                        width: temperatureSize,
+                                        height: temperatureSize)
     }
 }

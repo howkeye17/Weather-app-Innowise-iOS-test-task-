@@ -4,19 +4,18 @@
 //
 //  Created by Valera Vasilevich on 29.09.21.
 //
-
+//MARK: - LocationManager Protocol
 protocol LocationManagerProtocol {
     func getCurrrentLocation(completionHandler: @escaping ((CLLocation) -> Void))
 }
-
 import CoreLocation
 import Foundation
-
+//MARK: - LocationManager Class
 class LocationManager: NSObject, LocationManagerProtocol {
-    
+//MARK: - LocationManager properties
     private let locationManager = CLLocationManager()
     private var completion: ((CLLocation) -> Void)?
-    
+//MARK: - LocationManager methods
     func getCurrrentLocation(completionHandler: @escaping ((CLLocation) -> Void)) {
         self.completion = completionHandler
         self.locationManager.delegate = self
@@ -26,7 +25,7 @@ class LocationManager: NSObject, LocationManagerProtocol {
     }
     
 }
-
+//MARK: - Extension for LocationManager
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }        

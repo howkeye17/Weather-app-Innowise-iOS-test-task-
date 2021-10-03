@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//MARK: TodayWeatherData - struct for the response from API for Current weather
 struct TodayWeatherData: Codable {
     let name: String?  // cityName
     let unixTime: Int?

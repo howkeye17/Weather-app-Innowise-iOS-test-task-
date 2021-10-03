@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//MARK: ForecastWeatherData - struct for the response from API for Forecast weather
 struct ForecastWeatherData: Codable {
     let todayWeatherData: [TodayWeatherData]?
     let city: City?

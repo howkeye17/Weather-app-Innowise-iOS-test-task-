@@ -6,9 +6,9 @@
 //
 import CoreLocation
 import Foundation
-
+//MARK: - NetworkWeatherManager Class
 class NetworkWeatherManager: NSObject {
-    
+//MARK: - NetworkWeatherManager properties
     enum RequestType {
         case today
         case forecast
@@ -18,12 +18,12 @@ class NetworkWeatherManager: NSObject {
     private var todayCompletion: ((TodayWeather) -> Void)?
     private var forecastCompletion: ((ForecastWeatherData) -> Void)?
     private var requestType: RequestType?
-    
+//MARK: - NetworkWeatherManager initialisation
     override init() {
         super.init()
         locationManager = LocationManager()
     }
-    
+//MARK: - NetworkWeatherManager public methods
     func getTodayWeatherData(forRequestType requestType: RequestType, completion : @escaping ((TodayWeather) -> Void)) {
         self.requestType = requestType
         self.todayCompletion = completion
@@ -43,7 +43,7 @@ class NetworkWeatherManager: NSObject {
                                     longitude: location.coordinate.longitude)
         })
     }
-    
+//MARK: - NetworkWeatherManager private methods
     private func makeWeatherRequest(forCoordinatesLatitude latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         var urlString = ""
         

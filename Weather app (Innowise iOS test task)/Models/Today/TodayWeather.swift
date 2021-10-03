@@ -5,9 +5,9 @@
 //  Created by Valera Vasilevich on 27.09.21.
 //
 import Foundation
-
+//MARK: - TodayWeather Strcut for initialisation of all properties
 struct TodayWeather {
-
+//MARK: - Properties
     let cityName: String?
     var currentCity: String {
         guard let city = cityName else { return "no data" }
@@ -83,7 +83,7 @@ struct TodayWeather {
         default: return "no data"
         }
     }
-    
+//MARK: Initialisation
     init?(todayWeatherData: TodayWeatherData) {
         cityName = todayWeatherData.name
         temperature = todayWeatherData.main?.temp
