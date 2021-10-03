@@ -232,6 +232,8 @@ class TodayViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Share", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.gray, for: .highlighted)
+        button.addTarget(self, action: #selector(shareText(sender:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -258,6 +260,25 @@ class TodayViewController: UIViewController {
         }
     }
     
+}
+//MARK: - Extension with ShareButton method
+extension TodayViewController {
+    
+    @objc func shareText(sender: UIButton) {
+        let cityName = self.todayViewModel?.cityName
+        let weather = self.todayViewModel?.weatherLabel
+        let humidity = self.todayViewModel?.humidity
+        let precipitation = self.todayViewModel?.precipitation
+        let pressure = self.todayViewModel?.pressure
+        let windSpeed = self.todayViewModel?.windSpeed
+        let windDirection = self.todayViewModel?.windDirection
+        
+        let textToShare = [cityName, weather, humidity, precipitation, pressure, windSpeed, windDirection]
+        let activityViewController = UIActivityViewController(activityItems: textToShare as [Any], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Extension for setting up view
