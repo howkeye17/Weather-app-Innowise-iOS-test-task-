@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EA5F9B7127070A250094A029 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F9B7027070A250094A029 /* DateFormatter.swift */; };
-		EA6C20E1270849DE007CC39B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C20E0270849DE007CC39B /* HeaderView.swift */; };
+		EA6C20E1270849DE007CC39B /* HeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C20E0270849DE007CC39B /* HeaderCellView.swift */; };
 		EA6C20E32708C5AE007CC39B /* WeatherCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C20E22708C5AE007CC39B /* WeatherCellViewModel.swift */; };
 		EA6C20E52709D9FC007CC39B /* HeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C20E42709D9FC007CC39B /* HeaderCellViewModel.swift */; };
 		EAB545CB26FF2F19000D0354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CA26FF2F19000D0354 /* AppDelegate.swift */; };
@@ -18,7 +18,7 @@
 		EAB545D726FF2F1E000D0354 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB545D526FF2F1E000D0354 /* LaunchScreen.storyboard */; };
 		EAB545DF26FF302E000D0354 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545DE26FF302E000D0354 /* TodayViewController.swift */; };
 		EAB545E126FF3041000D0354 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545E026FF3041000D0354 /* ForecastViewController.swift */; };
-		EAB545E426FF34A3000D0354 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545E326FF34A3000D0354 /* WeatherCell.swift */; };
+		EAB545E426FF34A3000D0354 /* WeatherCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545E326FF34A3000D0354 /* WeatherCellView.swift */; };
 		EAB545E7270222F4000D0354 /* TodayWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545E6270222F4000D0354 /* TodayWeatherData.swift */; };
 		EAB545ED27032143000D0354 /* ForecastWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545EC27032143000D0354 /* ForecastWeatherData.swift */; };
 		EAB545F027034809000D0354 /* NetworkWeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545EF27034809000D0354 /* NetworkWeatherManager.swift */; };
@@ -31,7 +31,7 @@
 
 /* Begin PBXFileReference section */
 		EA5F9B7027070A250094A029 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
-		EA6C20E0270849DE007CC39B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		EA6C20E0270849DE007CC39B /* HeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellView.swift; sourceTree = "<group>"; };
 		EA6C20E22708C5AE007CC39B /* WeatherCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherCellViewModel.swift; path = ../../../../../WeatherCellViewModel.swift; sourceTree = "<group>"; };
 		EA6C20E42709D9FC007CC39B /* HeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellViewModel.swift; sourceTree = "<group>"; };
 		EAB545C726FF2F19000D0354 /* Weather app (Innowise iOS test task).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather app (Innowise iOS test task).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,7 +43,7 @@
 		EAB545D826FF2F1E000D0354 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAB545DE26FF302E000D0354 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		EAB545E026FF3041000D0354 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
-		EAB545E326FF34A3000D0354 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
+		EAB545E326FF34A3000D0354 /* WeatherCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCellView.swift; sourceTree = "<group>"; };
 		EAB545E6270222F4000D0354 /* TodayWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherData.swift; sourceTree = "<group>"; };
 		EAB545EC27032143000D0354 /* ForecastWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherData.swift; sourceTree = "<group>"; };
 		EAB545EF27034809000D0354 /* NetworkWeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWeatherManager.swift; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				EAB545E026FF3041000D0354 /* ForecastViewController.swift */,
-				EAB545E326FF34A3000D0354 /* WeatherCell.swift */,
-				EA6C20E0270849DE007CC39B /* HeaderView.swift */,
+				EAB545E326FF34A3000D0354 /* WeatherCellView.swift */,
+				EA6C20E0270849DE007CC39B /* HeaderCellView.swift */,
 			);
 			path = ForecastVC;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 				EAB545DF26FF302E000D0354 /* TodayViewController.swift in Sources */,
 				EAB545F027034809000D0354 /* NetworkWeatherManager.swift in Sources */,
 				EAB545CF26FF2F1A000D0354 /* TabBarController.swift in Sources */,
-				EAB545E426FF34A3000D0354 /* WeatherCell.swift in Sources */,
+				EAB545E426FF34A3000D0354 /* WeatherCellView.swift in Sources */,
 				EAB545CB26FF2F19000D0354 /* AppDelegate.swift in Sources */,
 				EAB545CD26FF2F1A000D0354 /* SceneDelegate.swift in Sources */,
 				EAB545FB2704BD0F000D0354 /* LocationManager.swift in Sources */,
@@ -290,7 +290,7 @@
 				EAB545E126FF3041000D0354 /* ForecastViewController.swift in Sources */,
 				EAB545F5270348F4000D0354 /* ForecastViewModel.swift in Sources */,
 				EAB545E7270222F4000D0354 /* TodayWeatherData.swift in Sources */,
-				EA6C20E1270849DE007CC39B /* HeaderView.swift in Sources */,
+				EA6C20E1270849DE007CC39B /* HeaderCellView.swift in Sources */,
 				EA6C20E52709D9FC007CC39B /* HeaderCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

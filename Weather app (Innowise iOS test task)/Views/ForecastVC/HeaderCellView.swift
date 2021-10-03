@@ -7,10 +7,10 @@
 
 import UIKit
 //MARK: - Header View class
-class HeaderView: UITableViewHeaderFooterView {
+class HeaderCellView: UITableViewHeaderFooterView {
 //MARK: - Static properties for Header View
     static let reuseId = "HeaderView"
-    static let headerSectionHeight: CGFloat = 80
+    static let headerSectionHeight: CGFloat = 50
 //MARK: -viewModel for Header in TableView
     weak var headerViewModel: HeaderCellViewModelProtocol? {
         willSet(headerViewModel) {
@@ -39,12 +39,11 @@ class HeaderView: UITableViewHeaderFooterView {
         super.layoutSubviews()
         
         let labelSize = contentView.frame.size.height - 24
-        let textSize = labelSize / 2
-        headerLabel.font = UIFont.systemFont(ofSize: textSize)
+        headerLabel.font = UIFont.systemFont(ofSize: labelSize)
         
         headerLabel.frame = CGRect(x: 16,
                                    y: (contentView.frame.height - labelSize) / 2,
-                                   width: labelSize * 4,
-                                   height: labelSize / 1.5)
+                                   width: contentView.frame.width - 20,
+                                   height: labelSize)
     }
 }

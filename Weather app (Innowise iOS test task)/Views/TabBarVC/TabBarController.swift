@@ -22,6 +22,7 @@ class TabBarController: UITabBarController{
         forecastVC.title = "Forecast"
         forecastVC.view.backgroundColor = .white
         forecastVC.tabBarItem.image = UIImage(systemName: "cloud.moon")
+        forecastVC.navigationBar.prefersLargeTitles = true
         
         self.setViewControllers([todayVC, forecastVC], animated: false)
         self.modalPresentationStyle = .fullScreen

@@ -10,7 +10,7 @@ import Foundation
 extension DateFormatter {
     
     enum ForecastDateFormat: String {
-        case weekdayDate = "EEEE, dd MMM"
+        case weekdayDate = "EEEE, dd MMMM"
         case currentTime = "HH:mm"
         case fullFormatDate = "YYYY-MM-dd HH:mm:ss"
     }

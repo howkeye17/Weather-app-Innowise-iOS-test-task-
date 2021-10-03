@@ -7,7 +7,7 @@
 
 import UIKit
 //MARK: - Weather Cell class
-class WeatherCell: UITableViewCell {
+class WeatherCellView: UITableViewCell {
 //MARK: -Static properties for cell in TableView
     static let reuseId = "weatherCell"
     static let rowHeight: CGFloat = 80

@@ -11,6 +11,7 @@ protocol ForecastViewModelProtocol {
     func cellViewModel(forIndexPath indexPath: IndexPath) -> WeatherCellViewModelProtocol?
     func numbersOfSections() -> Int
     func numberOfRows(inSection section: Int) -> Int
+    func titleForForecastVC() -> String
 }
 
 class ForecastViewModel: NSObject, ForecastViewModelProtocol {
@@ -64,5 +65,8 @@ class ForecastViewModel: NSObject, ForecastViewModelProtocol {
         return sortedForecast[section].count
     }
     
+    func titleForForecastVC() -> String {
+        return cityName
+    }
     
 }

@@ -14,8 +14,8 @@ class ForecastViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         forecstViewModel = ForecastViewModel()
-        tableView.register(WeatherCell.self, forCellReuseIdentifier: WeatherCell.reuseId)
-        tableView.register(HeaderView.self, forHeaderFooterViewReuseIdentifier: HeaderView.reuseId)
+        tableView.register(WeatherCellView.self, forCellReuseIdentifier: WeatherCellView.reuseId)
+        tableView.register(HeaderCellView.self, forHeaderFooterViewReuseIdentifier: HeaderCellView.reuseId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,6 +23,7 @@ class ForecastViewController: UITableViewController {
         forecstViewModel?.fetchWeatherForecast { [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                self.navigationController?.navigationBar.topItem?.title = self.forecstViewModel?.titleForForecastVC()
                 self.tableView.reloadData()
             }
         }
@@ -31,7 +32,7 @@ class ForecastViewController: UITableViewController {
 
 // MARK: - Table View DataSource methods
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.reuseId) as? HeaderView else { return
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderCellView.reuseId) as? HeaderCellView else { return
             UIView() }
         let headerViewModel = forecstViewModel?.headerViewModel(inSection: section)
         header.headerViewModel = headerViewModel
@@ -47,7 +48,7 @@ class ForecastViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: WeatherCell.reuseId, for: indexPath) as? WeatherCell else
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WeatherCellView.reuseId, for: indexPath) as? WeatherCellView else
             { return UITableViewCell() }
         let cellViewModel = forecstViewModel?.cellViewModel(forIndexPath: indexPath)
         cell.cellViewModel = cellViewModel
@@ -56,10 +57,10 @@ class ForecastViewController: UITableViewController {
     
 // MARK: - Table View Delegate methods
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return HeaderView.headerSectionHeight
+        return HeaderCellView.headerSectionHeight
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return WeatherCell.rowHeight
+        return WeatherCellView.rowHeight
     }
     
 }
