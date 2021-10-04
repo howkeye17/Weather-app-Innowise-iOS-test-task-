@@ -29,7 +29,7 @@ class WeatheCellViewModel: WeatherCellViewModelProtocol {
         return weatherForecast.weatherStatus
     }
     var temperature: String {
-        return weatherForecast.temperatureString + " ºC"
+        return weatherForecast.temperatureString 
     }
 //MARK: - Initialisation
     init(weatherForecast: ForecastWeather) {

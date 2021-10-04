@@ -9,7 +9,24 @@ import UIKit
 //MARK: - TodayViewController Class
 class TodayViewController: UIViewController {
 //MARK: - ViewModel for TodayViewController
-    private var todayViewModel: TodayViewModelProtocol?
+    private var todayViewControllerViewModel: TodayViewControllerViewModelProtocol?
+    private var todayViewModel: TodayViewModelProtocol? {
+        willSet(viewModel) {
+            guard let todayViewModel = viewModel else { return }
+            DispatchQueue.main.async {
+                self.spinner.removeFromSuperview()
+                self.view.subviews.forEach { $0.isHidden = false }
+                self.weatherImage.image = UIImage(systemName: todayViewModel.weatherIcon)
+                self.cityLabel.text = todayViewModel.cityName
+                self.weatherConditionLabel.text = todayViewModel.weatherCondition
+                self.humidityLabel.text = todayViewModel.humidity
+                self.precipitationLabel.text = todayViewModel.precipitation
+                self.pressureLabel.text = todayViewModel.pressure
+                self.windLabel.text = todayViewModel.windSpeed
+                self.directionLabel.text = todayViewModel.windDirection
+            }
+        }
+    }
 // MARK: - UI elements for TodayViewController
     private let todayLabel: UILabel = {
         let label = UILabel()
@@ -44,7 +61,7 @@ class TodayViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let weatherLabel: UILabel = {
+    private let weatherConditionLabel: UILabel = {
         let label = UILabel()
         label.text = "---------"
         label.font = UIFont.systemFont(ofSize: 28)
@@ -252,15 +269,14 @@ class TodayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        todayViewModel = TodayViewModel()
+        todayViewControllerViewModel = TodayViewControllerViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        todayViewModel?.fetchWeatherForToday { [weak self] in
-            guard let self = self else { return }
-            self.updateViewWithTodayWeatherData()
-        }
+        todayViewControllerViewModel?.fetchTodayWeather(completion: { todayWeather in
+            self.todayViewModel = TodayViewModel(weather: todayWeather)
+        })
     }
     
 }
@@ -269,7 +285,7 @@ extension TodayViewController {
     
     @objc func shareText(sender: UIButton) {
         let cityName = self.todayViewModel?.cityName
-        let weather = self.todayViewModel?.weatherLabel
+        let weather = self.todayViewModel?.weatherCondition
         let humidity = self.todayViewModel?.humidity
         let precipitation = self.todayViewModel?.precipitation
         let pressure = self.todayViewModel?.pressure
@@ -281,25 +297,6 @@ extension TodayViewController {
         activityViewController.popoverPresentationController?.sourceView = self.view
         
         self.present(activityViewController, animated: true, completion: nil)
-    }
-}
-
-// MARK: - Extension for update view
-extension TodayViewController {
-    
-    private func updateViewWithTodayWeatherData() {
-        DispatchQueue.main.async {
-            self.spinner.removeFromSuperview()
-            self.view.subviews.forEach { $0.isHidden = false }
-            self.weatherImage.image = UIImage(systemName: self.todayViewModel?.weatherIcon ?? "nosign")
-            self.cityLabel.text = self.todayViewModel?.cityName
-            self.weatherLabel.text = self.todayViewModel?.weatherLabel
-            self.humidityLabel.text = self.todayViewModel?.humidity
-            self.precipitationLabel.text = self.todayViewModel?.precipitation
-            self.pressureLabel.text = self.todayViewModel?.pressure
-            self.windLabel.text = self.todayViewModel?.windSpeed
-            self.directionLabel.text = self.todayViewModel?.windDirection
-        }
     }
 }
 // MARK: - Extension for setting up view
@@ -326,7 +323,7 @@ extension TodayViewController {
         constraints.append(weatherImage.widthAnchor.constraint(equalTo: topContainerView.widthAnchor))
         
         topStackView.addArrangedSubview(cityLabel)
-        topStackView.addArrangedSubview(weatherLabel)
+        topStackView.addArrangedSubview(weatherConditionLabel)
         view.addSubview(topStackView)
         constraints.append(topStackView.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 8))
         constraints.append(topStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor))

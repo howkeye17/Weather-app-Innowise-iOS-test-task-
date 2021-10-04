@@ -49,7 +49,7 @@ struct ForecastWeather {
     let forecastTemperature: Double?
     var temperatureString: String {
         guard let temp = forecastTemperature else { return "no data"}
-        return String(format: "%.0f", temp)
+        return String(format: "%.0f", temp) + " ºC"
     }
     
     let unix: Int?
