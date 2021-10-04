@@ -66,7 +66,7 @@ class WeatherCellView: UITableViewCell {
 // MARK: -LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.backgroundColor = UIColor(named: "myBackgroundColor")
+        self.backgroundColor = UIColor(named: "myBackgroundColor")
         let imageSize = contentView.frame.size.height - 24
         let temperatureSize = imageSize * 1.5
         let textSize = contentView.frame.size.height / 4

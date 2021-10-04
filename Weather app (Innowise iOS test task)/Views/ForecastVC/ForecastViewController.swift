@@ -13,11 +13,8 @@ class ForecastViewController: UITableViewController {
 //MARK: - Lifecycle of the ForecastViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = UIColor(named: "myBackgroundColor")
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "myBackgroundColor")
+        setupViewController()
         forecstViewModel = ForecastViewModel()
-        tableView.register(WeatherCellView.self, forCellReuseIdentifier: WeatherCellView.reuseId)
-        tableView.register(HeaderCellView.self, forHeaderFooterViewReuseIdentifier: HeaderCellView.reuseId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,4 +62,16 @@ class ForecastViewController: UITableViewController {
         return WeatherCellView.rowHeight
     }
     
+}
+
+extension ForecastViewController {
+    
+    private func setupViewController() {
+        self.tableView.backgroundColor = UIColor(named: "myBackgroundColor")
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "myBackgroundColor")
+        self.tableView.allowsSelection = false
+        
+        tableView.register(WeatherCellView.self, forCellReuseIdentifier: WeatherCellView.reuseId)
+        tableView.register(HeaderCellView.self, forHeaderFooterViewReuseIdentifier: HeaderCellView.reuseId)
+    }
 }

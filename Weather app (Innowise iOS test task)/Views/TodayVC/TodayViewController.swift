@@ -315,7 +315,7 @@ extension TodayViewController {
         
         view.addSubview(topContainerView)
         constraints.append(topContainerView.topAnchor.constraint(equalTo: todayLabel.bottomAnchor, constant: 8))
-        constraints.append(topContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15))
+        constraints.append(topContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.16))
         constraints.append(topContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
         constraints.append(topContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor))
         
@@ -350,10 +350,10 @@ extension TodayViewController {
         centerStackView.addArrangedSubview(humidityStackView)
         centerStackView.addArrangedSubview(precipitationStackView)
         centerStackView.addArrangedSubview(pressureStackView)
-        constraints.append(centerStackView.topAnchor.constraint(equalTo: textView1.bottomAnchor,constant: -8))
+        constraints.append(centerStackView.topAnchor.constraint(equalTo: textView1.bottomAnchor,constant: -12))
         constraints.append(centerStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
         constraints.append(centerStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor))
-        constraints.append(centerStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1))
+        constraints.append(centerStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.11))
         
         windStackView.addArrangedSubview(windImage)
         windStackView.addArrangedSubview(windLabel)
@@ -365,17 +365,17 @@ extension TodayViewController {
         constraints.append(bottomStackView.topAnchor.constraint(equalTo: centerStackView.bottomAnchor))
         constraints.append(bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         constraints.append(bottomStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6))
-        constraints.append(bottomStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1))
+        constraints.append(bottomStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.11))
         
         view.addSubview(textView2)
-        constraints.append(textView2.topAnchor.constraint(equalTo: bottomStackView.bottomAnchor, constant: -20))
+        constraints.append(textView2.topAnchor.constraint(equalTo: bottomStackView.bottomAnchor, constant: -24))
         constraints.append(textView2.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24))
         constraints.append(textView2.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24))
         
         view.addSubview(shareButton)
         constraints.append(shareButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
         constraints.append(shareButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor))
-        constraints.append(shareButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10))
+        constraints.append(shareButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor))
         
         view.subviews.forEach { $0.isHidden = true }
         

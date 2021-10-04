@@ -38,6 +38,7 @@ class HeaderCellView: UITableViewHeaderFooterView {
 //MARK: - LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.tintColor = UIColor(named: "myBackgroundColor")
         contentView.backgroundColor = UIColor(named: "myBackgroundColor")
         let labelSize = contentView.frame.size.height - 24
         headerLabel.font = UIFont.systemFont(ofSize: labelSize)
