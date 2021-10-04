@@ -15,7 +15,7 @@ class TodayViewController: UIViewController {
         let label = UILabel()
         label.text = "Today"
         label.font = UIFont.systemFont(ofSize: 30)
-        label.textColor = UIColor(named: "AccentColor")
+        label.textColor = UIColor(named: "myTextColor")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -29,6 +29,7 @@ class TodayViewController: UIViewController {
     private let weatherImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "nosign")
+        image.tintColor = UIColor(named: "myImageColor")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -38,7 +39,7 @@ class TodayViewController: UIViewController {
         label.text = "--------"
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 24)
-        label.textColor = UIColor(named: "AccentColor")
+        label.textColor = UIColor(named: "myTextColor")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -47,7 +48,7 @@ class TodayViewController: UIViewController {
         let label = UILabel()
         label.text = "---------"
         label.font = UIFont.systemFont(ofSize: 28)
-        label.textColor = UIColor(named: "AccentColor")
+        label.textColor = UIColor(named: "myTextColor")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -64,6 +65,7 @@ class TodayViewController: UIViewController {
     private let locationImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "location")
+        image.tintColor = UIColor(named: "myTextColor")
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -72,7 +74,7 @@ class TodayViewController: UIViewController {
         let textView = UITextView()
         textView.text = "--------------------"
         textView.font = .systemFont(ofSize: 20)
-        textView.textColor = UIColor(named: "AccentColor")
+        textView.textColor = UIColor(named: "myTextColor")
         textView.backgroundColor = .none
         textView.textAlignment = .center
         textView.isEditable = false
@@ -84,7 +86,7 @@ class TodayViewController: UIViewController {
         let textView = UITextView()
         textView.text = "--------------------"
         textView.font = .systemFont(ofSize: 20)
-        textView.textColor = UIColor(named: "AccentColor")
+        textView.textColor = UIColor(named: "myTextColor")
         textView.backgroundColor = .none
         textView.textAlignment = .center
         textView.isEditable = false
@@ -111,6 +113,7 @@ class TodayViewController: UIViewController {
     private let humidityImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "rain")
+        image.tintColor = .black
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -119,7 +122,7 @@ class TodayViewController: UIViewController {
         let label = UILabel()
         label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor(named: "AccentColor")
+        label.textColor = UIColor(named: "myTextColor")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -143,7 +146,7 @@ class TodayViewController: UIViewController {
         let label = UILabel()
         label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor(named: "AccentColor")
+        label.textColor = UIColor(named: "myTextColor")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -167,7 +170,7 @@ class TodayViewController: UIViewController {
         let label = UILabel()
         label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor(named: "AccentColor")
+        label.textColor = UIColor(named: "myTextColor")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -199,7 +202,7 @@ class TodayViewController: UIViewController {
         let label = UILabel()
         label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor(named: "AccentColor")
+        label.textColor = UIColor(named: "myTextColor")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -223,7 +226,7 @@ class TodayViewController: UIViewController {
         let label = UILabel()
         label.text = "---"
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor(named: "AccentColor")
+        label.textColor = UIColor(named: "myTextColor")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -231,7 +234,7 @@ class TodayViewController: UIViewController {
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setTitle("Share", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(UIColor(named: "myTextColor"), for: .normal)
         button.setTitleColor(.gray, for: .highlighted)
         button.addTarget(self, action: #selector(shareText(sender:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false

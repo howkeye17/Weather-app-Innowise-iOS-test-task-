@@ -16,17 +16,22 @@ class TabBarController: UITabBarController{
         let forecastVC = UINavigationController(rootViewController: ForecastViewController())
         
         todayVC.title = "Today"
-        todayVC.view.backgroundColor = .white
+        todayVC.view.backgroundColor = UIColor(named: "myBackgroundColor")
         todayVC.tabBarItem.image = UIImage(systemName: "sun.max")
         
+        
         forecastVC.title = "Forecast"
-        forecastVC.view.backgroundColor = .white
+        forecastVC.view.backgroundColor = UIColor(named: "myBackgroundColor")
         forecastVC.tabBarItem.image = UIImage(systemName: "cloud.moon")
         forecastVC.navigationBar.prefersLargeTitles = true
         
+        
+        
         self.setViewControllers([todayVC, forecastVC], animated: false)
         self.modalPresentationStyle = .fullScreen
-        self.tabBar.barTintColor = .white
+        self.tabBar.barTintColor = UIColor(named: "myBackgroundColor")
+        self.tabBar.tintColor = UIColor(named: "myTextColor")
+        self.tabBar.backgroundColor = UIColor(named: "myBackgroundColor")
     }
 
 

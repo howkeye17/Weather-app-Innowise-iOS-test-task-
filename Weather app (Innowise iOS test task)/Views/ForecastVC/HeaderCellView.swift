@@ -23,6 +23,7 @@ class HeaderCellView: UITableViewHeaderFooterView {
        let label = UILabel()
         label.text = "Header"
         label.textAlignment = .left
+        label.textColor = UIColor(named: "myTextColor")
         return label
     }()
 //MARK: - Initialisation
@@ -37,7 +38,7 @@ class HeaderCellView: UITableViewHeaderFooterView {
 //MARK: - LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        contentView.backgroundColor = UIColor(named: "myBackgroundColor")
         let labelSize = contentView.frame.size.height - 24
         headerLabel.font = UIFont.systemFont(ofSize: labelSize)
         

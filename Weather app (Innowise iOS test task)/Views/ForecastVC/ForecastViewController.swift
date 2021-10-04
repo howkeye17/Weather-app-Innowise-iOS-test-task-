@@ -13,6 +13,8 @@ class ForecastViewController: UITableViewController {
 //MARK: - Lifecycle of the ForecastViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.backgroundColor = UIColor(named: "myBackgroundColor")
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "myBackgroundColor")
         forecstViewModel = ForecastViewModel()
         tableView.register(WeatherCellView.self, forCellReuseIdentifier: WeatherCellView.reuseId)
         tableView.register(HeaderCellView.self, forHeaderFooterViewReuseIdentifier: HeaderCellView.reuseId)

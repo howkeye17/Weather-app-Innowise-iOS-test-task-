@@ -24,13 +24,12 @@ class WeatherCellView: UITableViewCell {
 // MARK: - WEatherCell UI elements
     let weatherImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "sun.max")
-        image.tintColor = .black
+        image.tintColor = UIColor(named: "myImageColor")
         return image
     }()
     let timeTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "13:00"
+        textView.textColor = UIColor(named: "myTextColor")
         textView.backgroundColor = .none
         textView.textAlignment = .center
         textView.isEditable = false
@@ -39,7 +38,7 @@ class WeatherCellView: UITableViewCell {
     }()
     let weatherTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "Clear"
+        textView.textColor = UIColor(named: "myTextColor")
         textView.backgroundColor = .none
         textView.textAlignment = .center
         textView.isEditable = false
@@ -48,7 +47,7 @@ class WeatherCellView: UITableViewCell {
     }()
     let temperatureLabel: UILabel = {
         let label = UILabel()
-        label.text = "22ºC"
+        label.textColor = UIColor(named: "myTextColor")
         label.textAlignment = .center
         return label
     }()
@@ -67,7 +66,7 @@ class WeatherCellView: UITableViewCell {
 // MARK: -LayoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        contentView.backgroundColor = UIColor(named: "myBackgroundColor")
         let imageSize = contentView.frame.size.height - 24
         let temperatureSize = imageSize * 1.5
         let textSize = contentView.frame.size.height / 4
