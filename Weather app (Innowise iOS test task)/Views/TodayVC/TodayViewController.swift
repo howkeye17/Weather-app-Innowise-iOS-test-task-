@@ -281,7 +281,7 @@ extension TodayViewController {
     }
 }
 
-// MARK: - Extension for setting up view
+// MARK: - Extension for update view
 extension TodayViewController {
     
     private func updateViewWithTodayWeatherData() {
@@ -298,8 +298,11 @@ extension TodayViewController {
             self.directionLabel.text = self.todayViewModel?.windDirection
         }
     }
+}
+// MARK: - Extension for setting up view
+    extension TodayViewController {
     
-    private func setupView() {
+        private func setupView() {
         var constraints = [NSLayoutConstraint]()
         
         view.addSubview(todayLabel)

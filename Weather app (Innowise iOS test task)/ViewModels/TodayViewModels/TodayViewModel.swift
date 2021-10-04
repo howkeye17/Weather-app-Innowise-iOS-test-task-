@@ -23,18 +23,17 @@ protocol TodayViewModelProtocol {
 class TodayViewModel: NSObject, TodayViewModelProtocol {
 //MARK: - Properties for TodayViewModel
     private let networkManager = NetworkWeatherManager()
-    
 //MARK: - Properties for TodayVC
-    var cityName = ""
-    var temperature = ""
-    var weatherStatus = ""
-    var weatherIcon = ""
-    var humidity = ""
-    var precipitation = ""
-    var pressure = ""
-    var windSpeed = ""
-    var windDirection = ""
-    var weatherLabel = ""
+    private(set) var cityName = ""
+    private(set) var temperature = ""
+    private(set) var weatherStatus = ""
+    private(set) var weatherIcon = ""
+    private(set) var humidity = ""
+    private(set) var precipitation = ""
+    private(set) var pressure = ""
+    private(set) var windSpeed = ""
+    private(set) var windDirection = ""
+    private(set) var weatherLabel = ""
     
 //MARK: - TodayViewModel methods
     

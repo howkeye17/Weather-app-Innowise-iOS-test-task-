@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		EA5F9B7127070A250094A029 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F9B7027070A250094A029 /* DateFormatter.swift */; };
 		EA6C20E1270849DE007CC39B /* HeaderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C20E0270849DE007CC39B /* HeaderCellView.swift */; };
-		EA6C20E32708C5AE007CC39B /* WeatherCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C20E22708C5AE007CC39B /* WeatherCellViewModel.swift */; };
 		EA6C20E52709D9FC007CC39B /* HeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C20E42709D9FC007CC39B /* HeaderCellViewModel.swift */; };
+		EA6C20E8270AF7A9007CC39B /* WeatherCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C20E7270AF7A9007CC39B /* WeatherCellViewModel.swift */; };
 		EAB545CB26FF2F19000D0354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CA26FF2F19000D0354 /* AppDelegate.swift */; };
 		EAB545CD26FF2F1A000D0354 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CC26FF2F1A000D0354 /* SceneDelegate.swift */; };
 		EAB545CF26FF2F1A000D0354 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB545CE26FF2F1A000D0354 /* TabBarController.swift */; };
@@ -32,8 +32,8 @@
 /* Begin PBXFileReference section */
 		EA5F9B7027070A250094A029 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		EA6C20E0270849DE007CC39B /* HeaderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellView.swift; sourceTree = "<group>"; };
-		EA6C20E22708C5AE007CC39B /* WeatherCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherCellViewModel.swift; path = ../../../../../WeatherCellViewModel.swift; sourceTree = "<group>"; };
 		EA6C20E42709D9FC007CC39B /* HeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellViewModel.swift; sourceTree = "<group>"; };
+		EA6C20E7270AF7A9007CC39B /* WeatherCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCellViewModel.swift; sourceTree = "<group>"; };
 		EAB545C726FF2F19000D0354 /* Weather app (Innowise iOS test task).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather app (Innowise iOS test task).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB545CA26FF2F19000D0354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAB545CC26FF2F1A000D0354 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +81,44 @@
 			path = LocationManager;
 			sourceTree = "<group>";
 		};
+		EA6C20E9270AF891007CC39B /* TodayViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EAB545F2270348E8000D0354 /* TodayViewModel.swift */,
+			);
+			path = TodayViewModels;
+			sourceTree = "<group>";
+		};
+		EA6C20EA270AF8A5007CC39B /* ForecastViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EAB545F4270348F4000D0354 /* ForecastViewModel.swift */,
+				EA6C20E7270AF7A9007CC39B /* WeatherCellViewModel.swift */,
+				EA6C20E42709D9FC007CC39B /* HeaderCellViewModel.swift */,
+			);
+			path = ForecastViewModels;
+			sourceTree = "<group>";
+		};
+		EA6C20EB270AF8CD007CC39B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EAB545EE270347EB000D0354 /* NetworkManager */,
+				EA6C20E62709E182007CC39B /* LocationManager */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EA6C20EE270B0070007CC39B /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				EAB545CA26FF2F19000D0354 /* AppDelegate.swift */,
+				EAB545CC26FF2F1A000D0354 /* SceneDelegate.swift */,
+				EAB545D326FF2F1E000D0354 /* Assets.xcassets */,
+				EAB545D826FF2F1E000D0354 /* Info.plist */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
 		EAB545BE26FF2F19000D0354 = {
 			isa = PBXGroup;
 			children = (
@@ -100,16 +138,12 @@
 		EAB545C926FF2F19000D0354 /* Weather app (Innowise iOS test task) */ = {
 			isa = PBXGroup;
 			children = (
-				EAB545CA26FF2F19000D0354 /* AppDelegate.swift */,
-				EAB545CC26FF2F1A000D0354 /* SceneDelegate.swift */,
-				EAB545EE270347EB000D0354 /* NetworkManager */,
-				EA6C20E62709E182007CC39B /* LocationManager */,
+				EA6C20EB270AF8CD007CC39B /* Services */,
 				EAB545E5270222CD000D0354 /* Models */,
 				EAB545E226FF342A000D0354 /* Views */,
 				EAB545F1270348C5000D0354 /* ViewModels */,
 				EA5F9B6F27070A010094A029 /* Extension */,
-				EAB545D326FF2F1E000D0354 /* Assets.xcassets */,
-				EAB545D826FF2F1E000D0354 /* Info.plist */,
+				EA6C20EE270B0070007CC39B /* Supporting files */,
 			);
 			path = "Weather app (Innowise iOS test task)";
 			sourceTree = "<group>";
@@ -128,8 +162,8 @@
 		EAB545E5270222CD000D0354 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EAB546032704C586000D0354 /* Forecast */,
-				EAB546002704C562000D0354 /* Today */,
+				EAB546032704C586000D0354 /* Forecast Models */,
+				EAB546002704C562000D0354 /* Today Models */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,10 +179,8 @@
 		EAB545F1270348C5000D0354 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				EAB545F2270348E8000D0354 /* TodayViewModel.swift */,
-				EAB545F4270348F4000D0354 /* ForecastViewModel.swift */,
-				EA6C20E22708C5AE007CC39B /* WeatherCellViewModel.swift */,
-				EA6C20E42709D9FC007CC39B /* HeaderCellViewModel.swift */,
+				EA6C20E9270AF891007CC39B /* TodayViewModels */,
+				EA6C20EA270AF8A5007CC39B /* ForecastViewModels */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -187,22 +219,22 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
-		EAB546002704C562000D0354 /* Today */ = {
+		EAB546002704C562000D0354 /* Today Models */ = {
 			isa = PBXGroup;
 			children = (
 				EAB545FE2704C556000D0354 /* TodayWeather.swift */,
 				EAB545E6270222F4000D0354 /* TodayWeatherData.swift */,
 			);
-			path = Today;
+			path = "Today Models";
 			sourceTree = "<group>";
 		};
-		EAB546032704C586000D0354 /* Forecast */ = {
+		EAB546032704C586000D0354 /* Forecast Models */ = {
 			isa = PBXGroup;
 			children = (
 				EAB546012704C57A000D0354 /* ForecastWeather.swift */,
 				EAB545EC27032143000D0354 /* ForecastWeatherData.swift */,
 			);
-			path = Forecast;
+			path = "Forecast Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,13 +309,13 @@
 				EAB545F3270348E8000D0354 /* TodayViewModel.swift in Sources */,
 				EAB545ED27032143000D0354 /* ForecastWeatherData.swift in Sources */,
 				EAB545DF26FF302E000D0354 /* TodayViewController.swift in Sources */,
+				EA6C20E8270AF7A9007CC39B /* WeatherCellViewModel.swift in Sources */,
 				EAB545F027034809000D0354 /* NetworkWeatherManager.swift in Sources */,
 				EAB545CF26FF2F1A000D0354 /* TabBarController.swift in Sources */,
 				EAB545E426FF34A3000D0354 /* WeatherCellView.swift in Sources */,
 				EAB545CB26FF2F19000D0354 /* AppDelegate.swift in Sources */,
 				EAB545CD26FF2F1A000D0354 /* SceneDelegate.swift in Sources */,
 				EAB545FB2704BD0F000D0354 /* LocationManager.swift in Sources */,
-				EA6C20E32708C5AE007CC39B /* WeatherCellViewModel.swift in Sources */,
 				EA5F9B7127070A250094A029 /* DateFormatter.swift in Sources */,
 				EAB546022704C57A000D0354 /* ForecastWeather.swift in Sources */,
 				EAB545FF2704C556000D0354 /* TodayWeather.swift in Sources */,
@@ -360,6 +392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -415,6 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -432,7 +466,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TLX89AH7T8;
-				INFOPLIST_FILE = "Weather app (Innowise iOS test task)/Info.plist";
+				INFOPLIST_FILE = "Weather app (Innowise iOS test task)/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,7 +485,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TLX89AH7T8;
-				INFOPLIST_FILE = "Weather app (Innowise iOS test task)/Info.plist";
+				INFOPLIST_FILE = "Weather app (Innowise iOS test task)/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
