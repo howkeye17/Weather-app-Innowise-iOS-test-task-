@@ -49,12 +49,12 @@ class TodayViewModel: NSObject, TodayViewModelProtocol {
         self.temperature = weather.temperatureString
         self.weatherStatus = weather.todayWeatherStatus
         self.weatherIcon = weather.systemIconNameString
-        self.humidity = weather.todayHumidity + "%"
-        self.precipitation = weather.precipitationAmount + " mm"
-        self.pressure = weather.todayPressure + " hPA"
-        self.windSpeed = weather.windKmH + " km/h"
+        self.humidity = weather.todayHumidity
+        self.precipitation = weather.precipitationAmount
+        self.pressure = weather.todayPressure
+        self.windSpeed = weather.windKmH
         self.windDirection = weather.compassDirection
-        self.weatherLabel = self.temperature + "ºC  |  " + self.weatherStatus
+        self.weatherLabel = weather.fullWeatherCondition
     }
     
 }

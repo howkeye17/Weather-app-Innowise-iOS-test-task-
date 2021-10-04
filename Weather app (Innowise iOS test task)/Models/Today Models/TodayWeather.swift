@@ -25,6 +25,9 @@ struct TodayWeather {
         guard let status = weatherStatus else { return "no data" }
         return status
     }
+    var fullWeatherCondition: String {
+        return temperatureString + "ºC  |  " + todayWeatherStatus
+    }
     
     let todayConditionCode: Int?
     var conditionCode: Int {
@@ -47,23 +50,23 @@ struct TodayWeather {
     let humidity: Int?
     var todayHumidity: String {
         guard let todayHumidity = humidity else { return "no data"}
-        return "\(todayHumidity)"
+        return "\(todayHumidity) %"
     }
     let rainAmount: Double?
     var precipitationAmount: String {
-        guard let precipitation = rainAmount else { return "0.0" }
-        return "\(precipitation)"
+        guard let precipitation = rainAmount else { return "0.0 mm" }
+        return "\(precipitation) mm"
     }
     let pressure: Int?
     var todayPressure: String {
         guard let pressure = pressure else { return "no data" }
-        return "\(pressure)"
+        return "\(pressure) hPA"
     }
     
     let windSpeed: Double?
     var windKmH: String {
         guard let windSpeed = windSpeed else { return "no data" }
-        return "\((Int(windSpeed) * 3600) / 1000)"
+        return "\((Int(windSpeed) * 3600) / 1000) km/h"
     }
     let direction: Int?
     var windDirection: Int {
