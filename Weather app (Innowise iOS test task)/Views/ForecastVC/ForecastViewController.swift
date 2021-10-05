@@ -10,6 +10,14 @@ import UIKit
 class ForecastViewController: UITableViewController {
 //MARK: - ViewModel for ForecastViewController
     private var forecstViewModel: ForecastViewModelProtocol?
+//MARK: - UI elements for ForecastViewController
+    private let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.startAnimating()
+        spinner.color = .black
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
 //MARK: - Lifecycle of the ForecastViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +30,12 @@ class ForecastViewController: UITableViewController {
         forecstViewModel?.fetchWeatherForecast { [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                self.spinner.removeFromSuperview()
                 self.navigationController?.navigationBar.topItem?.title = self.forecstViewModel?.titleForForecastVC()
                 self.tableView.reloadData()
             }
         }
     }
-    
-
 // MARK: - Table View DataSource methods
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderCellView.reuseId) as? HeaderCellView else { return
@@ -63,7 +70,7 @@ class ForecastViewController: UITableViewController {
     }
     
 }
-
+//MARK: - Extension for the setting up ForecastViewController
 extension ForecastViewController {
     
     private func setupViewController() {
@@ -73,5 +80,10 @@ extension ForecastViewController {
         
         tableView.register(WeatherCellView.self, forCellReuseIdentifier: WeatherCellView.reuseId)
         tableView.register(HeaderCellView.self, forHeaderFooterViewReuseIdentifier: HeaderCellView.reuseId)
+        
+        tableView.addSubview(spinner)
+        NSLayoutConstraint.activate([spinner.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+                                     spinner.centerYAnchor.constraint(equalTo: tableView.centerYAnchor)])
     }
 }
+

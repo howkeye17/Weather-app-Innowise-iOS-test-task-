@@ -19,13 +19,10 @@ class TabBarController: UITabBarController{
         todayVC.view.backgroundColor = UIColor(named: "myBackgroundColor")
         todayVC.tabBarItem.image = UIImage(systemName: "sun.max")
         
-        
         forecastVC.title = "Forecast"
         forecastVC.view.backgroundColor = UIColor(named: "myBackgroundColor")
         forecastVC.tabBarItem.image = UIImage(systemName: "cloud.moon")
         forecastVC.navigationBar.prefersLargeTitles = true
-        
-        
         
         self.setViewControllers([todayVC, forecastVC], animated: false)
         self.modalPresentationStyle = .fullScreen
@@ -33,7 +30,6 @@ class TabBarController: UITabBarController{
         self.tabBar.tintColor = UIColor(named: "myTextColor")
         self.tabBar.backgroundColor = UIColor(named: "myBackgroundColor")
     }
-
 
 }
 
