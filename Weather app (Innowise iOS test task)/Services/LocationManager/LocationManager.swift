@@ -39,7 +39,12 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        self.locationManager.startUpdatingLocation()
+        switch manager.authorizationStatus {
+        case .authorizedWhenInUse: self.locationManager.startUpdatingLocation()
+        default: return
+        }
+        // alertController for another cases!
+        
     }
     
 }
