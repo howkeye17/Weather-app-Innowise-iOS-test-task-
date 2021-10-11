@@ -38,4 +38,8 @@ extension LocationManager: CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
     }
     
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        self.locationManager.startUpdatingLocation()
+    }
+    
 }
