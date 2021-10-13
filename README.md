@@ -1,4 +1,4 @@
-# Weather app (Innowise iOS test task)
+# Weather app 
 
 This project was developed according to the task.
 Main in project:
