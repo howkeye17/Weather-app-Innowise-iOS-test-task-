@@ -7,4 +7,4 @@ Main in project:
 - Geolocation of the user current location;
 - Autolayout from code;
 - Dark mode (change appearance in simulator to see how colours changed);
-- Possibility to share current weather in text formatt.
+- Possibility to share current weather in text format.
